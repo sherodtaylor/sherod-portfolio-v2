@@ -1,0 +1,23 @@
+node_modules
+dist
+.astro
+.env*.local
+.DS_Store
+
+# Resume build intermediates (LaTeX). CI rebuilds the PDF on every deploy.
+generated-resume.*
+*.aux
+*.log
+*.out
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Python venv from `make setup`
+venv
+__pycache__
+
+# public/resume.pdf is tracked — CI commits it on main per resume.yml.
+# (Was previously gitignored; that broke the workflow's commit step which
+# uses git diff to detect drift — ignored files always read as "no diff",
+# so the PDF never landed in the deploy.)

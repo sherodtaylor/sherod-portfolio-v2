@@ -64,12 +64,20 @@ jobs:
       - name: Commit regenerated PDF (main only)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          if git diff --quiet -- public/resume.pdf 2>/dev/null; then
-            echo "no drift — nothing to commit"
-            exit 0
+          if [ ! -f public/resume.pdf ]; then
+            echo "ERROR: public/resume.pdf is missing after build"
+            exit 1
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Stage first so the drift check works for both "untracked but
+          # newly built" and "tracked + modified" cases — the original
+          # `git diff --quiet -- public/resume.pdf` returned 0 (no diff)
+          # for untracked files, so the PDF never landed on main.
           git add public/resume.pdf
+          if git diff --cached --quiet; then
+            echo "no drift — nothing to commit"
+            exit 0
+          fi
           git commit -m "chore(resume): regenerate from config.yaml [skip ci]"
           git push
