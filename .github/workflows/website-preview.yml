@@ -30,9 +30,12 @@ jobs:
           # PR_PREVIEW_BASE must include the umbrella-dir prefix because
           # rossjrw/pr-preview-action publishes to gh-pages:/pr-preview/pr-<N>/
           # — lesson learned from sherodtaylor/agent-smith#108. Astro's base
-          # must match the live path exactly, otherwise CSS/JS resolve to a
-          # wrong path and the preview ships unstyled.
-          PR_PREVIEW_BASE: /pr-preview/pr-${{ github.event.number }}/
+          # must match the live path exactly. Until DNS cuts over to
+          # sherodtaylor.dev, we live under the github.io repo path
+          # /sherod-portfolio-v2/ so the full preview base is
+          # /sherod-portfolio-v2/pr-preview/pr-<N>/. Drop the repo prefix
+          # when DNS swaps.
+          PR_PREVIEW_BASE: /sherod-portfolio-v2/pr-preview/pr-${{ github.event.number }}/
         run: |
           bun install --frozen-lockfile
           bun run build
@@ -48,7 +51,8 @@ jobs:
       - name: Verify preview URL is reachable
         if: github.event.action != 'closed'
         run: |
-          URL="https://sherodtaylor.dev/pr-preview/pr-${{ github.event.number }}/"
+          # Match the website.yml convention — github.io URL until DNS swap.
+          URL="${PREVIEW_HOST:-https://sherodtaylor.github.io/sherod-portfolio-v2}/pr-preview/pr-${{ github.event.number }}/"
           for i in $(seq 1 30); do
             code=$(curl -s -o /dev/null -w "%{http_code}" "${URL}?cb=$(date +%s)")
             echo "[$i/30] ${URL} -> ${code}"
