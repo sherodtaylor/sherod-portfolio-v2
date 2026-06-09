@@ -104,18 +104,26 @@ const articleJsonLd = article ? {
     {articleJsonLd && <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)}></script>}
 
     <!--
-      Theme is dark by default per SOUL.md. The toggle in the footer sets
-      data-theme on <html>. We apply the saved preference inline before
-      paint to avoid a flash; localStorage gracefully degrades when unavailable.
+      Theme precedence: localStorage saved preference → OS prefers-color-scheme
+      → fallback to dark (SOUL.md default). Applied inline before paint to
+      avoid a flash. Both APIs gracefully degrade if blocked or unsupported.
     -->
     <script is:inline>
       (() => {
+        let theme = null;
         try {
           const saved = localStorage.getItem('theme');
-          if (saved === 'light' || saved === 'dark') {
-            document.documentElement.setAttribute('data-theme', saved);
+          if (saved === 'light' || saved === 'dark') theme = saved;
+        } catch { /* localStorage blocked */ }
+        if (!theme && typeof window.matchMedia === 'function') {
+          if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'light';
+          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = 'dark';
           }
-        } catch { /* localStorage blocked — stick with default */ }
+        }
+        if (theme) document.documentElement.setAttribute('data-theme', theme);
+        // If still no theme, leave the default in tokens.css alone (dark).
       })();
     </script>
   </head>
