@@ -30,27 +30,30 @@ const labelId = id ?? `pane-${label.toLowerCase().replace(/\s+/g, '-')}`;
 <style>
   .pane {
     border: 1px solid var(--border);
-    padding: var(--space-6) var(--space-6) var(--space-6);
+    padding: var(--space-8) var(--space-6) var(--space-6);
     margin: 0 0 var(--space-8);
     position: relative;
   }
   .pane:last-of-type { margin-bottom: 0; }
 
-  /* Inset label sits on the top border, like a tmux window title. */
+  /* Inset label sits centered on the top border, like a tmux window
+     title. translateY(-50%) is the cleanest centering trick; line-height
+     1 collapses the label box to its content so the math is exact. */
   .pane-label {
     position: absolute;
-    top: calc(var(--fs-h2) * -0.6);
+    top: 0;
     left: var(--space-4);
+    transform: translateY(-50%);
     background: var(--bg);
     padding: 0 var(--space-2);
     margin: 0;
-    /* Inherits global h2 styling (uppercase, tracked, muted) — no
-       overrides needed here. */
+    line-height: 1;
+    /* Inherits global h2 styling (uppercase, tracked, muted) otherwise. */
   }
 
   @media (max-width: 640px) {
     .pane {
-      padding: var(--space-5) var(--space-4) var(--space-4);
+      padding: var(--space-6) var(--space-4) var(--space-4);
       margin-bottom: var(--space-6);
     }
     .pane-label { left: var(--space-3); }
