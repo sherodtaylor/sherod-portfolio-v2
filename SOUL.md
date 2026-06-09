@@ -102,7 +102,7 @@ The brief is excellent design guidance for a generic technical portfolio. Sherod
 6. **Skills** (plain category lists, not tag clouds)
    - Grouped by: Languages · Frameworks · Infrastructure · Databases · Tools
    - Single line per category. No colorful badges, no animated tag grids, no "qualification chips."
-7. **Writing / Talks** — **technical articles only** (Jin's call). Non-technical posts live behind `/archive`, not linked from the v1 home. One-line per post, no thumbnails, no card grid.
+7. **Writing / Talks** — **engineering-shaped writing** surfaces on the home `/writing` list. That includes technical deep-dives **and** systems-thinking pieces about engineering itself (leadership-as-systems, working-ahead practice, POC discipline). Anything genuinely off-topic (lifestyle, off-brand) lives behind `/archive`, not linked from the home page. One-line per post, no thumbnails, no card grid. (Override of the earlier "technical-only" framing per Sherod 2026-06-09: leadership-systems writing reads as engineering, not lifestyle, and earned a home slot.)
 8. **Contact** — email + a single linked handle per channel. No grid of social icons.
 9. **Footer** — one line: `Sherod Taylor · NYC · 2026`. Same mono as the rest.
 
@@ -185,7 +185,7 @@ Banned (hard anti-pattern):
 | Q1 | **Full replacement, new repo, GH Pages.** Site moves to `sherodtaylor/sherod-portfolio-v2`. Not iterating on the old portfolio repo. | Sherod 2026-06-09 |
 | Q2 | **Work experience kept but shortened**, AI-focused on the lead (current EM) role. Older roles title + year + one-line outcome. Skills still surface. Override of Jin's drop-it-entirely reco. | Sherod 2026-06-09 |
 | Q3 | **`/now` page in v1.** Live signal, updates often. Top-of-page one-liner pulls from it. | Sherod 2026-06-09 |
-| Q4 | **Technical articles only.** Non-technical posts move behind `/archive`, not linked from the v1 home. | Sherod 2026-06-09 |
+| Q4 | **Engineering-shaped writing surfaces on home.** Technical deep-dives AND systems-thinking pieces about engineering itself (leadership-as-systems, POC practice, working-ahead) appear on the `/writing` list. Genuinely off-topic posts (lifestyle, off-brand) live behind `/archive`. Override of the earlier "technical-only" framing. | Sherod 2026-06-09 |
 | Q5 | **Resume = PDF link only.** No HTML resume page. PDF re-renders from `config.yaml` + restyled `resume-template.tex` on every deploy. | Sherod 2026-06-09 |
 | Q6 | **SOUL.md ships in the v2 repo**, not homelab. Proximity to consuming code wins. PMBot's earlier "stay in homelab" reco overridden. | Sherod 2026-06-09 |
 | Visual | **Dark default + FiraCode Mono Nerd Font + 760–820px column.** A/B hybrid tilting toward A; toned-down coder vibe; design brief's restraint principles adopted; surface choices overridden. | Sherod 2026-06-09 |
@@ -218,7 +218,7 @@ Drop this verbatim into any design / build conversation kicked off for `sherod-p
 >
 > **Imagery**: none. No project screenshots, hero imagery, thumbnails, avatar. Functional icons only (Lucide.dev style) or raw text glyphs. Nerdfont glyphs allowed *only* when functional (folder glyph next to a project path).
 >
-> **Structure**: Header (name, role, location, contact) → About (2–4 paragraphs, AI-focused lead) → Currently building (`/now` line + page) → Experience (compressed; lead role gets most space) → Selected projects (curated — serious engineering only) → Skills (plain category lists) → Writing / Talks (technical only) → Contact → Footer.
+> **Structure**: Header (name, role, location, contact) → About (2–4 paragraphs, AI-focused lead) → Currently building (`/now` line + page) → Experience (compressed; lead role gets most space) → Selected projects (curated — serious engineering only) → Skills (plain category lists) → Writing / Talks (engineering-shaped writing, includes systems-thinking pieces about engineering itself) → Contact → Footer.
 >
 > **Interaction**: fast loading, mobile responsive, keyboard accessible, semantic HTML, excellent typography, no unnecessary JavaScript, content-first.
 >

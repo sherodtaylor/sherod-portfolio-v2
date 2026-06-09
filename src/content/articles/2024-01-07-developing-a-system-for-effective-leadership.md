@@ -2,8 +2,10 @@
 title: "Developing a system for effective leadership"
 description: "Developing a system for effective leadership and managing the chaos"
 date: 2024-01-07
-# Non-technical (leadership) → routes to /archive per SOUL.md.
-technical: false
+# Sherod's call 2026-06-09: leadership-systems writing is engineering-shaped
+# enough to surface on /writing. Pmbot owns the SOUL.md rule revision; tag
+# stays here to match the live decision.
+technical: true
 ---
 
 ## Why you need a system
