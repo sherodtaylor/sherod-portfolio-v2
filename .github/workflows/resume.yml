@@ -79,5 +79,10 @@ jobs:
             echo "no drift — nothing to commit"
             exit 0
           fi
-          git commit -m "chore(resume): regenerate from config.yaml [skip ci]"
+          # No [skip ci] — the commit deliberately retriggers website.yml
+          # so gh-pages picks up the new PDF on the same push. resume.yml
+          # itself is path-filtered to resume sources only and won't
+          # retrigger on this commit (public/resume.pdf isn't in the
+          # paths filter), so no infinite loop.
+          git commit -m "chore(resume): regenerate from config.yaml"
           git push
