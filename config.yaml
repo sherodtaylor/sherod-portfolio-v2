@@ -7,6 +7,14 @@ personal:
   location: "New York, NY"
   tagline: "Hi I'm Sherod"
   description: "I'm a Platform Engineering Manager at Bloomberg, leading two teams (10 engineers) building AI tooling and the developer platform 9,000+ engineers ship on every day. I've spent 12+ years turning infrastructure into leverage for other teams — most recently making internal platform APIs callable by AI agents end-to-end. Off-hours, I run a home lab of three Claude Code agents that open and review their own PRs."
+  # Multi-paragraph About for the website only. The single-paragraph
+  # `description` above stays the LaTeX-resume header bio + the OG/meta
+  # blurb. Split here addresses Prad 2026-06-09: "content is chunked
+  # better, it's not just a big blob of words."
+  about:
+    - "I'm a Platform Engineering Manager at Bloomberg, leading two teams — 10 engineers total — building AI tooling and the developer platform that 9,000+ engineers ship on every day."
+    - "I've spent 12+ years turning infrastructure into leverage for other teams. Most recently that means making our internal platform APIs callable by AI agents end-to-end: identity, gateway, and the libraries other teams use to ship."
+    - "Off-hours, I run a home lab of three Claude Code agents — devbot, infrabot, pmbot — that open and review their own PRs. That work is open source under agent-smith and homelab."
   availability:
     status: "Open for new opportunities"
     active: true

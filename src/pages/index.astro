@@ -17,10 +17,11 @@ const technicalArticles = (await getCollection('articles'))
 
   <Pane label="About">
     <!--
-      About paragraph from config.yaml — also feeds the PDF resume.
-      Edit personal.description there; both surfaces update on deploy.
+      Multi-paragraph About from config.yaml `personal.about[]`. Falls
+      back to the single-paragraph `description` when `about` is absent.
+      The PDF resume + meta tags always use `description` (single bio line).
     -->
-    <p>{personal.description}</p>
+    {(personal.about ?? [personal.description]).map((para) => <p>{para}</p>)}
   </Pane>
 
   <Pane label="Experience">
