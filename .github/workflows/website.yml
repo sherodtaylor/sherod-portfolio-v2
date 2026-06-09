@@ -24,6 +24,10 @@ jobs:
           bun-version: '1'
 
       - name: Install + build
+        env:
+          # github.io path until DNS cuts over to sherodtaylor.dev. Flip to
+          # "/" here and in the reachability URL below when DNS swaps.
+          SITE_BASE: /sherod-portfolio-v2
         run: |
           bun install --frozen-lockfile
           bun run build
@@ -45,9 +49,13 @@ jobs:
       # URL stays stale. Without this step the workflow reports SUCCESS
       # silently. We poll for up to 5 minutes; Pages catches up in <2 min
       # after a gh-pages push.
+      # Until DNS for sherodtaylor.dev cuts over from Vercel (where the old
+      # portfolio lives) to GH Pages, verify against the default Pages URL.
+      # When the DNS swap lands, change PROD_URL to https://sherodtaylor.dev/
+      # in one line — the rest of the check is the same.
       - name: Verify production URL is reachable
         run: |
-          URL="https://sherodtaylor.dev/"
+          URL="${PROD_URL:-https://sherodtaylor.github.io/sherod-portfolio-v2/}"
           for i in $(seq 1 30); do
             code=$(curl -s -o /dev/null -w "%{http_code}" "${URL}?cb=$(date +%s)")
             echo "[$i/30] ${URL} -> ${code}"
