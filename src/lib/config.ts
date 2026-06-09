@@ -22,6 +22,9 @@ export interface Personal {
   title: string;
   location: string;
   description: string;
+  // Multi-paragraph About for the website. Optional — falls back to
+  // splitting `description` if absent. PDF resume always uses `description`.
+  about?: string[];
 }
 
 export interface ExperiencePosition {
