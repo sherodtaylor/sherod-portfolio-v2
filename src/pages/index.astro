@@ -25,7 +25,7 @@ const technicalArticles = (await getCollection('articles'))
 
   <Pane label="Experience">
     {experience.positions.map((p, i) => (
-      <article class={`role ${i === 0 ? 'role--lead' : 'role--compact'}`}>
+      <article class={`sub-pane role ${i === 0 ? 'role--lead' : 'role--compact'}`}>
         <h3>
           {p.role}{' '}<span class="muted">·</span>{' '}
           {p.company_url ? <a href={p.company_url}>{p.company}</a> : p.company}
@@ -44,7 +44,7 @@ const technicalArticles = (await getCollection('articles'))
 
   <Pane label="Selected projects">
     {projects.items.map((proj) => (
-      <article class="project">
+      <article class="sub-pane project">
         <h3>
           <a href={proj.link.href}>{proj.name}</a>
           {proj.website && (
@@ -92,15 +92,20 @@ const technicalArticles = (await getCollection('articles'))
 </BaseLayout>
 
 <style>
-  .role { margin-bottom: var(--space-8); }
-  .role:last-child { margin-bottom: 0; }
+  /* Sub-pane — second-level tmux pane inside a parent Pane. Same border
+     treatment, no inset label (the H3 inside is the title). Margin
+     stack between sub-panes; last one flush to parent's bottom padding. */
+  .sub-pane {
+    border: 1px solid var(--border);
+    padding: var(--space-4) var(--space-5);
+    margin: 0 0 var(--space-4);
+  }
+  .sub-pane:last-child { margin-bottom: 0; }
+  .sub-pane h3 { margin-bottom: var(--space-2); }
+
   .role h3 { margin-bottom: var(--space-1); }
   .role .meta { font-size: var(--fs-small); margin-bottom: var(--space-3); }
   .role--compact .meta { margin-bottom: 0; }
-
-  .project { margin-bottom: var(--space-8); }
-  .project:last-child { margin-bottom: 0; }
-  .project h3 { margin-bottom: var(--space-2); }
 
   .skills { margin: 0; }
   .skills dt { font-weight: 700; margin-top: var(--space-4); }
