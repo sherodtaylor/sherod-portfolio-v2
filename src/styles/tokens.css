@@ -44,10 +44,13 @@
 }
 
 :root {
-  /* Type — FiraCode Mono Nerd Font everywhere */
-  --font-mono:    'Fira Code', 'FiraCode Nerd Font Mono', ui-monospace,
-                  SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-                  monospace;
+  /* Type — Geist Mono primary (Jin's call 2026-06-09); FiraCode Nerd Font
+     Mono and Fira Code stay as fallbacks for cold loads and the
+     LaTeX-resume side of the pipeline (still FiraCode Nerd Font Mono in
+     resume-template.tex). */
+  --font-mono:    'Geist Mono', 'FiraCode Nerd Font Mono', 'Fira Code',
+                  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                  'Liberation Mono', monospace;
 
   /* Mono needs more vertical breathing than sans — SOUL.md typography rule. */
   --fs-body:      15px;
