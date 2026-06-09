@@ -62,32 +62,36 @@ const technicalArticles = (await getCollection('articles'))
     ))}
   </Pane>
 
-  <Pane label="Skills">
-    <dl class="skills">
-      {skills.categories.map((cat) => (
-        <>
-          <dt>{cat.title}</dt>
-          <dd>{cat.skills.map((s) => s.name).join(' · ')}</dd>
-        </>
-      ))}
-    </dl>
-  </Pane>
-
-  {technicalArticles.length > 0 && (
-    <Pane label="Writing">
-      <ul class="writing">
-        {technicalArticles.map((a) => (
-          <li>
-            <time datetime={a.data.date.toISOString()}>{a.data.date.toISOString().slice(0, 10)}</time>{' '}
-            <a href={`${import.meta.env.BASE_URL}/articles/${a.slug}`}>{a.data.title}</a>
-          </li>
+  {/* tmux vsplit on desktop only — short panes pair side-by-side
+      at ≥900px; everything still stacks on tablet + mobile. */}
+  <div class="pane-row">
+    <Pane label="Skills">
+      <dl class="skills">
+        {skills.categories.map((cat) => (
+          <>
+            <dt>{cat.title}</dt>
+            <dd>{cat.skills.map((s) => s.name).join(' · ')}</dd>
+          </>
         ))}
-      </ul>
-      <p class="muted small">
-        Non-technical posts live in <a href={`${import.meta.env.BASE_URL}/archive`}>/archive</a>.
-      </p>
+      </dl>
     </Pane>
-  )}
+
+    {technicalArticles.length > 0 && (
+      <Pane label="Writing">
+        <ul class="writing">
+          {technicalArticles.map((a) => (
+            <li>
+              <time datetime={a.data.date.toISOString()}>{a.data.date.toISOString().slice(0, 10)}</time>{' '}
+              <a href={`${import.meta.env.BASE_URL}/articles/${a.slug}`}>{a.data.title}</a>
+            </li>
+          ))}
+        </ul>
+        <p class="muted small">
+          Non-technical posts live in <a href={`${import.meta.env.BASE_URL}/archive`}>/archive</a>.
+        </p>
+      </Pane>
+    )}
+  </div>
 
   <Footer slot="footer" />
 </BaseLayout>
@@ -112,4 +116,19 @@ const technicalArticles = (await getCollection('articles'))
   .writing li { margin-bottom: var(--space-2); }
   .writing time { color: var(--fg-muted); font-size: var(--fs-small); margin-right: var(--space-2); }
   .small { font-size: var(--fs-small); }
+
+  /* Pane row — display: contents on small screens so each Pane keeps its
+     own margin-bottom and stacks naturally. At ≥900px, flip to a
+     2-column grid for "tmux vsplit on the desktop side." Long panes
+     (About, Experience, Selected projects) stay full-width above. */
+  .pane-row { display: contents; }
+  @media (min-width: 900px) {
+    .pane-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin: 0 0 var(--space-8);
+    }
+    .pane-row :global(.pane) { margin-bottom: 0; }
+  }
 </style>
