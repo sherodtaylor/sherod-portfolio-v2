@@ -8,9 +8,18 @@ interface Props {
   description?: string;
   pageType?: 'home' | 'page';
   sessionName?: string;
+  /* Optional Article-shape metadata for /articles/[slug] — surfaces
+     Schema.org Article JSON-LD so AI summarizers attribute the post
+     correctly when they cite it. */
+  article?: {
+    title: string;
+    description: string;
+    date: Date;
+    slug: string;
+  };
 }
 
-const { title, description, pageType = 'page', sessionName } = Astro.props;
+const { title, description, pageType = 'page', sessionName, article } = Astro.props;
 const config = loadConfig();
 
 const pageTitle = title
@@ -18,9 +27,12 @@ const pageTitle = title
   : `${config.personal.name} — ${config.personal.title}`;
 const pageDescription = description ?? config.personal.description;
 
+const canonicalUrl = new URL(Astro.url.pathname, 'https://sherodtaylor.dev').toString();
+
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': 'https://sherodtaylor.dev/#person',
   name: config.personal.name,
   jobTitle: config.personal.title,
   description: config.personal.description,
@@ -40,6 +52,32 @@ const personJsonLd = {
     'API Architecture',
   ],
 };
+
+const websiteJsonLd = pageType === 'home' ? {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://sherodtaylor.dev/#website',
+  name: `${config.personal.name} — ${config.personal.title}`,
+  url: 'https://sherodtaylor.dev',
+  description: config.personal.description,
+  inLanguage: 'en',
+  author: { '@id': 'https://sherodtaylor.dev/#person' },
+  publisher: { '@id': 'https://sherodtaylor.dev/#person' },
+} : null;
+
+const articleJsonLd = article ? {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.description,
+  datePublished: article.date.toISOString(),
+  dateModified: article.date.toISOString(),
+  author: { '@id': 'https://sherodtaylor.dev/#person' },
+  publisher: { '@id': 'https://sherodtaylor.dev/#person' },
+  url: canonicalUrl,
+  mainEntityOfPage: canonicalUrl,
+  inLanguage: 'en',
+} : null;
 ---
 <!doctype html>
 <html lang="en">
@@ -49,7 +87,8 @@ const personJsonLd = {
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://sherodtaylor.dev').toString()} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title={`${config.personal.name} — Writing`} href={`${import.meta.env.BASE_URL}/articles/feed.xml`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" />
@@ -57,10 +96,12 @@ const personJsonLd = {
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content={pageType === 'home' ? 'website' : 'article'} />
-    <meta property="og:url" content={new URL(Astro.url.pathname, 'https://sherodtaylor.dev').toString()} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta name="twitter:card" content="summary" />
 
     <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)}></script>
+    {websiteJsonLd && <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)}></script>}
+    {articleJsonLd && <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)}></script>}
 
     <!--
       Theme is dark by default per SOUL.md. The toggle in the footer sets
