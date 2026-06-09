@@ -35,10 +35,15 @@ const status = nowEntries[0]?.data.oneliner ?? '';
     <button
       id="theme-toggle"
       type="button"
-      aria-label="Toggle theme"
+      aria-label="Toggle theme (click to switch)"
       title="Toggle theme"
     >
-      <span class="bracket">[</span><span class="theme-label">theme</span><span class="bracket">]</span>
+      <!-- Label shows current mode ("dark" / "light"); clicking flips it.
+           Server-renders "dark" because dark is the default; the inline
+           script in <head> rewrites it on cold load when localStorage
+           holds a saved preference, so the visible label always matches
+           the actual data-theme attribute. -->
+      <span class="bracket">[</span><span class="theme-label" data-theme-label>dark</span><span class="bracket">]</span>
     </button>
   </span>
 </div>
@@ -47,11 +52,18 @@ const status = nowEntries[0]?.data.oneliner ?? '';
   (() => {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
+    const label = btn.querySelector('[data-theme-label]');
+    const sync = () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (label) label.textContent = current;
+    };
+    sync();
     btn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme') || 'dark';
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem('theme', next); } catch { /* ignore */ }
+      sync();
     });
   })();
 </script>
