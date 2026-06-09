@@ -10,51 +10,49 @@
  */
 
 /*
- * Type — FiraCode loaded from Google Fonts; the broader FiraCode Nerd Font
- * variant (used in the LaTeX resume + agent-smith chart) requires self-host
- * which we'll add when we need the Nerd glyphs. The brand reads as mono
- * either way; the fallback stack covers cold loads and no-network builds.
- *
- * SOUL.md governs the *visual rule* (mono throughout, no decoration); the
- * exact mono face is a swap we can revisit without touching the brand.
+ * Type — Geist Mono (Vercel) loaded from Google Fonts per Jin 2026-06-09.
+ * The PDF resume still uses FiraCode Nerd Font Mono in LaTeX (separate
+ * pipeline); brand rule "mono throughout" holds either way.
  */
 
 :root,
 :root[data-theme='dark'] {
-  /* Surface */
-  --bg:          #0d1117;            /* near-black, GitHub-dark; not pure-black */
-  --bg-elev:     #161b22;
-  --fg:          #c9d1d9;            /* body text */
-  --fg-muted:   #8b949e;             /* secondary */
-  --border:     #21262d;             /* hairline */
-  --accent:     #79c0ff;             /* single accent — links, current-role marker */
+  /* Surface — Jin 2026-06-09: nudged darker for slightly more contrast. */
+  --bg:          #0a0c10;
+  --bg-elev:     #14181f;
+  --fg:          #d3d7dc;
+  --fg-muted:   #8b929c;
+  --border:     #1f242c;
+  /* Accent shifted slightly muted from #79c0ff per Jin's "tweak slightly" */
+  --accent:     #6fb6f0;
 
   color-scheme: dark;
 }
 
 :root[data-theme='light'] {
-  --bg:          #fbfbfa;            /* subtle off-white per Jin */
+  --bg:          #fbfbfa;
   --bg-elev:     #f3f3f1;
   --fg:          #1f2328;
   --fg-muted:   #57606a;
   --border:     #d0d7de;
-  --accent:     #0969da;             /* darker hue for ≥4.5:1 on light bg */
+  --accent:     #0969da;
 
   color-scheme: light;
 }
 
 :root {
   /* Type — FiraCode Mono Nerd Font everywhere */
-  --font-mono:    'Fira Code', 'FiraCode Nerd Font Mono', ui-monospace,
-                  SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-                  monospace;
+  --font-mono:    'Geist Mono', 'FiraCode Nerd Font Mono', 'Fira Code',
+                  ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                  'Liberation Mono', monospace;
 
-  /* Mono needs more vertical breathing than sans — SOUL.md typography rule. */
-  --fs-body:      15px;
-  --fs-small:     13px;
-  --fs-h1:        24px;
-  --fs-h2:        17px;
-  --fs-h3:        15px;
+  /* Body shrunk to 14px per Jin 2026-06-09. Mono still needs generous
+     line-height; that lives in global.css. */
+  --fs-body:      14px;
+  --fs-small:     12px;
+  --fs-h1:        22px;
+  --fs-h2:        14px;       /* Same as body — small/upper-case carries hierarchy. */
+  --fs-h3:        14px;
   --lh-body:      1.65;
   --lh-tight:     1.35;
 
