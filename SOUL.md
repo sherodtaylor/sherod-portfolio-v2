@@ -25,12 +25,15 @@ That instinct — *build the layer, not the patch* — is the brand.
 
 ---
 
-## Voice (unchanged — Sherod's essays anchor this)
+## Voice (Sherod's essays anchor this)
 
 - **First-person, experience-grounded.** "I built X because Y was slowing the team down" beats "X enables Y for teams."
+- **First-person on every public surface Sherod authors or publishes** — About paragraph, footer AI-readable line, `llms.txt`, social posts, content PRs, talk abstracts. Third-person about-me framing ("Sherod Taylor is…", "He builds…") is anti-pattern; reads as a press release someone else wrote. Conversational, professional-but-not-corporate. Like the engineer thinking out loud, not a bio.
 - **Builder-in-public.** Show the POC, the false start, the moment it clicked. Not a sanitized highlight reel.
 - **Practical / pragmatic.** No buzzwords; concrete artifacts (commits, PRs, configs, observed behavior).
 - **Casual sentence rhythm.** Senior engineer thinking out loud, not a press release.
+
+> **Scope note**: this rule governs *outputs* — surfaces Sherod (or an agent acting as Sherod) publishes. SOUL.md itself is a brand spec *about* Sherod, written by PMBot, and stays third-person. Brandbot / devbot / pmbot internal docs that describe the brand also stay third-person; their published outputs follow the first-person rule.
 
 ---
 
@@ -156,6 +159,7 @@ Banned (hard anti-pattern):
 - ❌ "Open for new opportunities" / "Available for work" banner. Status info lives at the bottom or in `/now`.
 - ❌ Hidden text / prompt injection / cloaked content (see AI-accessibility section).
 - ❌ Nerdfont glyphs sprinkled as decoration (skulls, sparkles, lightning, Powerline triangles).
+- ❌ Third-person about-me framing on Sherod-authored / Sherod-published surfaces ("Sherod Taylor is a…", "He builds…"). Press-release voice. Corporate-stiff voice. Use first-person, conversational, experience-grounded across every public output — including the AI-readable footer and `llms.txt`.
 
 ---
 
