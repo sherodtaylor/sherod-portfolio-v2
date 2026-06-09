@@ -2,12 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Pane from '../components/Pane.astro';
 import { loadConfig } from '../lib/config';
 import { getCollection } from 'astro:content';
 
 const { personal, experience, projects, skills } = loadConfig();
 
-// SOUL.md: technical articles only on home. Non-technical move to /archive.
 const technicalArticles = (await getCollection('articles'))
   .filter((a) => a.data.technical)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -15,18 +15,15 @@ const technicalArticles = (await getCollection('articles'))
 <BaseLayout pageType="home">
   <Header />
 
-  <section aria-labelledby="about-h">
-    <h2 id="about-h">About</h2>
+  <Pane label="About">
     <!--
-      Two-paragraph about pulled straight from config.yaml (shared with the
-      PDF resume). Edit personal.description there and both surfaces update
-      on next deploy.
+      About paragraph from config.yaml — also feeds the PDF resume.
+      Edit personal.description there; both surfaces update on deploy.
     -->
     <p>{personal.description}</p>
-  </section>
+  </Pane>
 
-  <section aria-labelledby="experience-h">
-    <h2 id="experience-h">Experience</h2>
+  <Pane label="Experience">
     {experience.positions.map((p, i) => (
       <article class={`role ${i === 0 ? 'role--lead' : 'role--compact'}`}>
         <h3>
@@ -43,10 +40,9 @@ const technicalArticles = (await getCollection('articles'))
         {i !== 0 && p.description && <p class="muted">{p.description}</p>}
       </article>
     ))}
-  </section>
+  </Pane>
 
-  <section aria-labelledby="projects-h">
-    <h2 id="projects-h">Selected projects</h2>
+  <Pane label="Selected projects">
     {projects.items.map((proj) => (
       <article class="project">
         <h3>
@@ -63,14 +59,9 @@ const technicalArticles = (await getCollection('articles'))
         )}
       </article>
     ))}
-  </section>
+  </Pane>
 
-  <section aria-labelledby="skills-h">
-    <h2 id="skills-h">Skills</h2>
-    <!--
-      Plain category lists per SOUL.md anti-pattern rule (no tag clouds, no
-      colored badges). One line per category.
-    -->
+  <Pane label="Skills">
     <dl class="skills">
       {skills.categories.map((cat) => (
         <>
@@ -79,11 +70,10 @@ const technicalArticles = (await getCollection('articles'))
         </>
       ))}
     </dl>
-  </section>
+  </Pane>
 
   {technicalArticles.length > 0 && (
-    <section aria-labelledby="writing-h">
-      <h2 id="writing-h">Writing</h2>
+    <Pane label="Writing">
       <ul class="writing">
         {technicalArticles.map((a) => (
           <li>
@@ -95,7 +85,7 @@ const technicalArticles = (await getCollection('articles'))
       <p class="muted small">
         Non-technical posts live in <a href={`${import.meta.env.BASE_URL}/archive`}>/archive</a>.
       </p>
-    </section>
+    </Pane>
   )}
 
   <Footer slot="footer" />
