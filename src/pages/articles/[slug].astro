@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('articles');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const backHref = entry.data.technical
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/archive`;
+const backLabel = entry.data.technical ? '← home' : '← /archive';
+---
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <p class="back"><a href={backHref}>{backLabel}</a></p>
+  <h1>{entry.data.title}</h1>
+  <p class="muted">
+    {entry.data.date.toISOString().slice(0, 10)}
+  </p>
+  <article>
+    <Content />
+  </article>
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .back { font-size: var(--fs-small); margin-bottom: var(--space-6); }
+  article { margin-top: var(--space-6); }
+  article :global(h2) { margin-top: var(--space-8); margin-bottom: var(--space-3); }
+  article :global(h3) { margin-top: var(--space-6); margin-bottom: var(--space-2); }
+  article :global(p) { margin-bottom: var(--space-4); }
+  article :global(ul), article :global(ol) { margin-bottom: var(--space-4); }
+</style>

@@ -1,0 +1,138 @@
+\documentclass[11pt,letterpaper]{article}
+
+%% Resume template — SOUL.md aligned (see repo root).
+%%
+%% Visual rules from SOUL.md:
+%%   - FiraCode Mono Nerd Font everywhere (matches the website).
+%%   - Single accent color used sparingly (links + heading rule).
+%%   - Hairline rules between sections, no decorated headers.
+%%   - No colored highlight boxes, no badges, no card grids.
+%%   - Documentation-style spacing (generous line-height for mono body).
+%%
+%% Single source of truth: config.yaml. generate-resume.py renders this
+%% template; the website renders from the same YAML. SOUL.md edits update
+%% both surfaces on next deploy.
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{fontawesome5}
+
+\geometry{
+    top=0.7in,
+    bottom=0.7in,
+    left=1.0in,
+    right=1.0in
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist{nosep}
+\setlist[itemize]{leftmargin=*, itemsep=2pt}
+
+\linespread{1.15}
+
+\definecolor{textdark}{HTML}{1F2328}
+\definecolor{textgray}{HTML}{57606A}
+\definecolor{accent}{HTML}{0969DA}
+\definecolor{rulecolor}{HTML}{D0D7DE}
+
+% Aliases — every legacy color reference renders as the muted gray so any
+% leftover decorative call resolves to neutral text.
+\definecolor{green}{HTML}{57606A}
+\definecolor{purple}{HTML}{57606A}
+\definecolor{orange}{HTML}{57606A}
+\definecolor{cyan}{HTML}{57606A}
+\definecolor{red}{HTML}{57606A}
+\definecolor{pink}{HTML}{57606A}
+\definecolor{indigo}{HTML}{57606A}
+\definecolor{yellow}{HTML}{57606A}
+\definecolor{amber}{HTML}{57606A}
+\definecolor{emerald}{HTML}{57606A}
+\definecolor{rose}{HTML}{57606A}
+\definecolor{accentblue}{HTML}{0969DA}
+
+\setmainfont{FiraCode Nerd Font Mono}[
+    UprightFont = FiraCode Nerd Font Mono,
+    BoldFont = FiraCode Nerd Font Mono Bold,
+    ItalicFont = FiraCode Nerd Font Mono,
+    BoldItalicFont = FiraCode Nerd Font Mono Bold
+]
+
+\titleformat{\section}
+    {\large\bfseries\color{textdark}}
+    {}
+    {0em}
+    {}
+    [\vspace{0.15em}\color{rulecolor}\rule{\textwidth}{0.4pt}\vspace{0.4em}]
+
+\titleformat{\subsection}
+    {\normalsize\bfseries\color{textdark}}
+    {}
+    {0em}
+    {}
+
+\newcommand{\jobtitle}[4]{%
+    \textbf{\color{textdark}#1} \hfill \textcolor{textgray}{\footnotesize #2} \\
+    \textcolor{textgray}{\footnotesize #3 \textperiodcentered{} #4}%
+    \vspace{0.3em}
+}
+
+\newcommand{\project}[3]{%
+    \textbf{\color{textdark}#1} \hfill \href{#3}{\textcolor{accent}{\footnotesize #3}}\\
+    \textcolor{textgray}{\small #2}%
+    \vspace{0.2em}
+}
+
+\newcommand{\skillcategory}[5]{%
+    \textbf{\color{textdark}#1}\\%
+    {\footnotesize\color{textgray} #5}%
+    \vspace{0.4em}
+}
+
+\newcommand{\communityrole}[4]{%
+    \textbf{\color{textdark}#1} \hfill \textcolor{textgray}{\footnotesize #4} \\
+    \textcolor{textgray}{\footnotesize #2 \textperiodcentered{} #3}%
+    \vspace{0.2em}
+}
+
+% Hero highlights are anti-pattern per SOUL.md ("no qualification chips").
+% The generator still calls \highlightbox{}; render each as plain
+% middot-separated muted text so the existing data shape works without
+% emitting colored boxes.
+\newcommand{\highlightbox}[3]{%
+    {\footnotesize\color{textgray} #3}%
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    filecolor=accent,
+    urlcolor=accent,
+    pdfpagemode=UseNone,
+}
+
+\begin{document}
+
+{{HEADER_CONTENT}}
+
+\vspace{0.4em}
+\noindent
+{{HIGHLIGHTS_CONTENT}}
+\vspace{0.8em}
+
+{{EXPERIENCE_CONTENT}}
+
+{{SKILLS_CONTENT}}
+
+{{PROJECTS_CONTENT}}
+
+{{COMMUNITY_CONTENT}}
+
+\end{document}

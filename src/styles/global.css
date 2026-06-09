@@ -1,0 +1,111 @@
+@import './tokens.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  /* Documentation-inspired rhythm — generous outer padding on mobile,
+     centered single-column on desktop. */
+  padding: var(--space-12) var(--space-6);
+}
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  /* Hierarchy by weight + size only, never color or decoration. */
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--fg);
+  margin: 0;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); font-weight: 600; }
+
+p { margin: 0 0 var(--space-3); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+a:hover, a:focus-visible {
+  border-bottom-color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+ul, ol {
+  margin: 0 0 var(--space-3);
+  padding-left: var(--space-6);
+}
+
+li { margin-bottom: var(--space-1); }
+li:last-child { margin-bottom: 0; }
+
+code {
+  background: var(--bg-elev);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.94em;
+}
+
+pre {
+  background: var(--bg-elev);
+  padding: var(--space-3) var(--space-4);
+  overflow-x: auto;
+  border-radius: 4px;
+  font-size: var(--fs-small);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-12) 0;
+}
+
+/* Sections — hairline borders, generous gaps. SOUL.md "Typography & spacing". */
+section + section { margin-top: var(--space-12); }
+
+.muted { color: var(--fg-muted); }
+
+/* Skip link — keyboard-accessible per SOUL.md "Interaction guidelines". */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+.skip-link:focus {
+  left: var(--space-3);
+  top: var(--space-3);
+  background: var(--bg-elev);
+  color: var(--fg);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border);
+  z-index: 10;
+}
+
+/* Mobile: same comfortable margins, full-width column. */
+@media (max-width: 640px) {
+  body { padding: var(--space-6) var(--space-4); }
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; }
+}

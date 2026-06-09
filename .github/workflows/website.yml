@@ -1,0 +1,58 @@
+name: website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write       # peaceiris/actions-gh-pages pushes to gh-pages
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1'
+
+      - name: Install + build
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'website: deploy ${{ github.sha }}'
+
+      # Regression guard ported from sherodtaylor/agent-smith#107. If Pages is
+      # ever misconfigured (e.g. build_type flipped to "workflow", source
+      # pointed at the wrong branch), the gh-pages push lands but the live
+      # URL stays stale. Without this step the workflow reports SUCCESS
+      # silently. We poll for up to 5 minutes; Pages catches up in <2 min
+      # after a gh-pages push.
+      - name: Verify production URL is reachable
+        run: |
+          URL="https://sherodtaylor.dev/"
+          for i in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "${URL}?cb=$(date +%s)")
+            echo "[$i/30] ${URL} -> ${code}"
+            if [ "$code" = "200" ]; then exit 0; fi
+            sleep 10
+          done
+          echo "ERROR: production URL still not 200 after 5 minutes — check Settings → Pages." >&2
+          exit 1
