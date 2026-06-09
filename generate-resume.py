@@ -145,7 +145,7 @@ def generate_experience(config):
         # Add technologies used
         if 'technologies' in exp and exp['technologies']:
             tech_list = [escape_latex(tech) for tech in exp['technologies']]
-            tech_string = " • ".join(tech_list)
+            tech_string = " \\textperiodcentered{} ".join(tech_list)
             experience_content += f"""
 \\vspace{{0.2em}}
 {{\\footnotesize\\color{{textgray}} Technologies: {tech_string}}}
@@ -168,8 +168,9 @@ def generate_skills(config):
         experience = escape_latex(category['experience'])
         skills_list = [escape_latex(skill['name']) for skill in category['skills']]
         
-        # Create skills string
-        skills_string = " • ".join(skills_list)
+        # Middle-dot separator matches the website's Skills section join,
+        # so the PDF and the site read the same shape.
+        skills_string = " \\textperiodcentered{} ".join(skills_list)
         
         skills_content += f"""\\skillcategory
     {{{title}}}

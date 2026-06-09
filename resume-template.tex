@@ -90,10 +90,15 @@
     \vspace{0.2em}
 }
 
+% Skill category — title with years-of-experience tucked to the right,
+% then the skill list on the next line. Matches the website's "Skills"
+% section format (label + middot-separated list). #2 (description) and
+% #3 ("Expert") are intentionally not rendered — both are repetitive
+% bio prose, not callout info.
 \newcommand{\skillcategory}[5]{%
-    \textbf{\color{textdark}#1}\\%
+    \textbf{\color{textdark}#1}\hfill\textcolor{textgray}{\footnotesize #4}\\%
     {\footnotesize\color{textgray} #5}%
-    \vspace{0.4em}
+    \vspace{0.5em}
 }
 
 \newcommand{\communityrole}[4]{%
