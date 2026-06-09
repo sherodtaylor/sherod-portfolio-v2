@@ -1,0 +1,73 @@
+/*
+ * Design tokens — SOUL.md (see repo root).
+ *
+ * Dark by default per SOUL.md "Visual — locked 2026-06-09". Light mode opt-in
+ * via [data-theme="light"]. Single accent color, hairline borders, generous
+ * line-height for mono body.
+ *
+ * Hue identity is the same in both modes; only lightness shifts so the brand
+ * reads consistent across surfaces. Accent ≥4.5:1 contrast on both backgrounds.
+ */
+
+/*
+ * Type — FiraCode loaded from Google Fonts; the broader FiraCode Nerd Font
+ * variant (used in the LaTeX resume + agent-smith chart) requires self-host
+ * which we'll add when we need the Nerd glyphs. The brand reads as mono
+ * either way; the fallback stack covers cold loads and no-network builds.
+ *
+ * SOUL.md governs the *visual rule* (mono throughout, no decoration); the
+ * exact mono face is a swap we can revisit without touching the brand.
+ */
+
+:root,
+:root[data-theme='dark'] {
+  /* Surface */
+  --bg:          #0d1117;            /* near-black, GitHub-dark; not pure-black */
+  --bg-elev:     #161b22;
+  --fg:          #c9d1d9;            /* body text */
+  --fg-muted:   #8b949e;             /* secondary */
+  --border:     #21262d;             /* hairline */
+  --accent:     #79c0ff;             /* single accent — links, current-role marker */
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg:          #fbfbfa;            /* subtle off-white per Jin */
+  --bg-elev:     #f3f3f1;
+  --fg:          #1f2328;
+  --fg-muted:   #57606a;
+  --border:     #d0d7de;
+  --accent:     #0969da;             /* darker hue for ≥4.5:1 on light bg */
+
+  color-scheme: light;
+}
+
+:root {
+  /* Type — FiraCode Mono Nerd Font everywhere */
+  --font-mono:    'Fira Code', 'FiraCode Nerd Font Mono', ui-monospace,
+                  SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+                  monospace;
+
+  /* Mono needs more vertical breathing than sans — SOUL.md typography rule. */
+  --fs-body:      15px;
+  --fs-small:     13px;
+  --fs-h1:        24px;
+  --fs-h2:        17px;
+  --fs-h3:        15px;
+  --lh-body:      1.65;
+  --lh-tight:     1.35;
+
+  /* Spacing — multiples of 4px, documentation-rhythm */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Layout — 760-820px column per SOUL.md "Layout" section */
+  --measure:  780px;
+}

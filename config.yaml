@@ -1,0 +1,283 @@
+# Portfolio Configuration
+# Edit this file to customize your portfolio content
+
+personal:
+  name: "Sherod Taylor"
+  title: "Platform Engineering Manager @ Bloomberg"
+  location: "New York, NY"
+  tagline: "Hi I'm Sherod"
+  description: "Platform Engineering Manager at Bloomberg, leading two teams (10 engineers) building AI tooling and the developer platform 9,000+ engineers ship on every day. 12+ years turning infrastructure into leverage for other teams — most recently making internal platform APIs callable by AI agents end-to-end. Off-hours: home lab of three Claude Code agents that open and review their own PRs."
+  availability:
+    status: "Open for new opportunities"
+    active: true
+
+contact:
+  email: "sherodtaylor@gmail.com"
+  website: "https://www.sherodtaylor.dev"
+  github: "https://github.com/sherodtaylor"
+  linkedin: "https://www.linkedin.com/in/sherodtaylor/"
+
+site:
+  title: "Sherod Taylor - Platform Engineering Manager @ Bloomberg"
+  description: "Sherod Taylor Platform Engineering Manager @ Bloomberg with deep technical experience."
+
+hero:
+  highlights:
+    - name: "AI Platforms"
+      icon: "Bot"
+      color: "green"
+    - name: "Distributed Systems"
+      icon: "Server"
+      color: "purple"
+    - name: "API Architecture"
+      icon: "Cog"
+      color: "orange"
+    - name: "Full-Stack"
+      icon: "Code"
+      color: "cyan"
+    - name: "Leadership"
+      icon: "Crown"
+      color: "amber"
+    - name: "Project Management"
+      icon: "Tasks"
+      color: "emerald"
+    - name: "Product"
+      icon: "Box"
+      color: "rose"
+    - name: "Design"
+      icon: "Palette"
+      color: "indigo"
+
+skills:
+  categories:
+    - title: "Frontend Development"
+      description: "Building modern, responsive web applications"
+      icon: "react"
+      color: "from-blue-500/20 to-cyan-500/20"
+      experience: "12+ years"
+      skills:
+        - { name: "React", icon: "react" }
+        - { name: "Angular", icon: "Angular" }
+        - { name: "Next.js", icon: "nextjs" }
+        - { name: "TypeScript", icon: "typescript" }
+        - { name: "JavaScript", icon: "JavaScript" }
+        - { name: "Tailwind CSS", icon: "tailwindcss" }
+        - { name: "Vite", icon: "Zap" }
+        - { name: "Webpack", icon: "Webpack" }
+        - { name: "Module Federation", icon: "Network" }
+    - title: "Backend Development"
+      description: "Scalable server-side architecture and APIs"
+      icon: "nodejs"
+      color: "from-green-500/20 to-emerald-500/20"
+      experience: "12+ years"
+      skills:
+        - { name: "Node.js", icon: "nodejs" }
+        - { name: "TypeScript", icon: "typescript" }
+        - { name: "Go", icon: "go" }
+        - { name: "Python", icon: "python" }
+        - { name: "PostgreSQL", icon: "postgresql" }
+        - { name: "Redis", icon: "redis" }
+        - { name: "GraphQL", icon: "graphql" }
+        - { name: "Apache Kafka", icon: "kafka" }
+        - { name: "Apache Airflow", icon: "airflow" }
+        - { name: "Event Sourcing", icon: "Activity" }
+        - { name: "API Integration", icon: "Zap" }
+    - title: "DevOps & Infrastructure"
+      description: "Cloud infrastructure and deployment automation"
+      icon: "docker"
+      color: "from-purple-500/20 to-pink-500/20"
+      experience: "10+ years"
+      skills:
+        - { name: "Docker", icon: "docker" }
+        - { name: "Git", icon: "git" }
+        - { name: "Terraform", icon: "terraform" }
+        - { name: "Packer", icon: "packer" }
+        - { name: "Proxmox", icon: "proxmox" }
+        - { name: "OpenStack", icon: "openstack" }
+        - { name: "Networking", icon: "Network" }
+        - { name: "TrueNAS", icon: "truenas" }
+        - { name: "Kubernetes", icon: "kubernetes" }
+    - title: "Leadership & Strategy"
+      description: "Team leadership, product management, and design thinking"
+      icon: "Crown"
+      color: "from-amber-500/20 to-orange-500/20"
+      experience: "4+ years"
+      skills:
+        - { name: "Leadership", icon: "Crown" }
+        - { name: "People Management", icon: "Users" }
+        - { name: "Project Management", icon: "CheckSquare" }
+        - { name: "Product Strategy", icon: "Package" }
+        - { name: "Design Thinking", icon: "Palette" }
+        - { name: "Mentoring", icon: "Heart" }
+
+experience:
+  positions:
+    - company: "Bloomberg LP"
+      company_url: "https://www.bloomberg.com"
+      role: "Platform Engineering Manager"
+      period: "March 2023 - Present"
+      location: "New York, NY"
+      type: "Full-time"
+      logo: "bbg"
+      description: "Platform Engineering Manager leading two teams (10 engineers) building AI tooling and the developer platform that powers 9,000+ Bloomberg engineers. Focused on making internal platform APIs callable by AI agents end-to-end alongside the human users they already serve."
+      achievements:
+        - "Lead two engineering teams (10 engineers total) covering AI platform tooling and the internal developer platform"
+        - "Drove the bridge from the team's API surface to agentic developer tools — internal libraries, gateway changes, and identity work so AI agents authenticate as first-class clients alongside humans"
+        - "Founded the team's microfrontend framework (Vite + Module Federation): other product teams self-serve onto the platform with full auth, deployment, and shared UI primitives — collapsing a former central-team bottleneck"
+        - "Coach engineers to work ahead via POCs in the margin: validate a direction, surface real constraints, graduate the work into the roadmap with known tradeoffs"
+        - "Stay hands-on in the codebase — model the working-ahead behavior I expect from the team and run POCs alongside ICs"
+      technologies: ["Go", "TypeScript", "React", "Module Federation", "Kubernetes", "Observability", "Python", "AI / LLM tooling"]
+      color: "from-orange-500/20 to-red-500/20"
+    - company: "Bloomberg LP"
+      company_url: "https://www.bloomberg.com"
+      role: "Senior Software Engineer"
+      period: "August 2018 - March 2023"
+      location: "New York, NY"
+      type: "Full-time"
+      logo: "bbg"
+      description: "Founding engineer on Bloomberg's internal infrastructure provisioning platform. Architected full-stack software for the platform from day one and grew into a tech-lead role while staying hands-on in the codebase."
+      achievements:
+        - "Founding engineer on the internal infrastructure provisioning platform — designed the allocation lifecycle state machine, API-level observability instrumentation, and the workflow analytics stack used to drive SLO definition and capacity planning"
+        - "Built the platform's unified API gateway as the external API surface for managed infrastructure — single consistent contract regardless of which underlying system serves the request"
+        - "Designed and shipped the API-level observability layer (per-endpoint metrics, per-team SLO dashboards, runtime-switchable) before the team had any API observability"
+        - "Grew into tech-lead role while staying hands-on — modeled the working-ahead instinct that became how the team operates"
+      technologies: ["Python", "Go", "JavaScript", "React", "Node.js", "Module Federation", "GraphQL", "Observability", "Kubernetes"]
+      color: "from-orange-500/20 to-red-500/20"
+    - company: "Paxos (formerly itBit)"
+      company_url: "https://paxos.com"
+      role: "Senior Software Engineer"
+      period: "April 2015 - August 2018"
+      location: "New York, NY"
+      type: "Full-time"
+      logo: "paxos"
+      description: "Led infrastructure modernization and REST API platform development. Designed SWIFT banking system integration and implemented zero downtime deployments."
+      achievements:
+        - "Completed full Terraform migration of manually deployed systems"
+        - "Designed and implemented TLS client certificate authentication"
+        - "Led REST API platform development for institutional trading"
+        - "Designed SWIFT banking system for institutional trading integration"
+        - "Implemented zero downtime deployments using HA Proxy"
+        - "Proposed framework using Node.js, React.js, and Flux architecture"
+        - "Contributed to becoming second-largest Bitcoin exchange by volume"
+      technologies: ["Node.js", "React.js", "Terraform", "Docker", "PostgreSQL"]
+      color: "from-blue-500/20 to-indigo-500/20"
+    - company: "Madison Reed"
+      company_url: "https://www.madison-reed.com"
+      role: "Software Engineer"
+      period: "September 2013 - May 2015"
+      location: "San Francisco, CA"
+      type: "Full-time"
+      logo: "madison-reed"
+      description: "Implemented Redis caching system, developed custom CMS, and led migration from Magento to custom Node.js framework."
+      achievements:
+        - "Implemented Redis caching system reducing database calls"
+        - "Developed custom CMS tailored to company workflow"
+        - "Led migration from Magento to custom Node.js order processing framework"
+      technologies: ["Node.js", "Redis", "MongoDB", "JavaScript", "CSS"]
+      color: "from-pink-500/20 to-rose-500/20"
+
+projects:
+  items:
+    - name: "agent-smith"
+      description: "Autonomous AI engineering teammates that live inside the home lab cluster and treat Matrix as the input channel. Tag a bot, it opens a PR; tag the other bot, it reviews; the product-manager bot owns PRDs and roadmap. They auto-address review comments, use the cluster's own observability stack via MCP, and never hold the real credentials — those stay behind an egress proxy at the cluster edge. Packaged as a public Helm chart anyone can deploy."
+      highlights:
+        - "Three-Agent Crew, One Parametric Image: DevBot (code), InfraBot (k3s/Flux), and PMBot (product/PRDs) run as separate StatefulSets from the same ghcr.io/sherodtaylor/agent-smith image. Per-agent persona, MCP config, and subagents live under agents/<name>/; the shared base CLAUDE.md is one ConfigMap"
+        - "Matrix-Driven, Autonomous PR Workflow: Messages in #dev / #infra are real Claude Code prompts. After opening a PR the author mentions the other bot for review; the reviewer runs the code-review skill and posts inline findings. A Stop-hook re-wakes the author on unaddressed comments so iteration happens without a human in the loop"
+        - "Egress Credential Firewall (iron-proxy): Productionized so agents never hold real GitHub or Anthropic tokens — iron-proxy MITMs egress with a private CA and swaps placeholder tokens for real credentials per-host against a domain allowlist. A compromised pod leaks nothing useful"
+        - "MCP for Everything Observable: VictoriaMetrics + VictoriaLogs MCP servers, a stdio NATS MCP server for the durable event log, and the Matrix channel plugin for inputs. 'Check the api-latency dashboard' becomes a single prompt"
+        - "Two-Pane Runtime: Each pod runs claude in tmux — pane 0 owns the Matrix identity, pane 1 runs a second claude --remote-control with its own $HOME so humans can attach via kubectl exec or the Claude desktop/web app"
+        - "Public OSS Distribution: image (ghcr.io/sherodtaylor/agent-smith) and Helm chart (oci://ghcr.io/sherodtaylor/charts/agent-smith) ship every release; framework docs at sherodtaylor.github.io/agent-smith"
+      link:
+        href: "https://github.com/sherodtaylor/agent-smith"
+        label: "sherodtaylor/agent-smith"
+        is_private: false
+      website:
+        href: "https://sherodtaylor.github.io/agent-smith"
+        label: "Framework docs"
+      icon: "Bot"
+      tags: ["Claude Code", "MCP", "AI Agents", "Matrix", "NATS", "k3s", "Flux GitOps", "Helm", "iron-proxy", "Bun", "Go", "Docker", "tmux", "GitHub Actions"]
+    - name: "SpareCoins"
+      description: "A crypto investment mobile application that rounds up spare change from everyday transactions and automatically invests it in cryptocurrency. Think Acorns for crypto - democratizing crypto investing through micro-investing with seamless bank integration."
+      highlights:
+        - "Automated Crypto Investing: Connects to bank accounts to round up transaction spare change and automatically purchases cryptocurrency through Coinbase exchange integration"
+        - "GraphQL-First Architecture: Built robust backend API using Golang, GraphQL, and Echo framework with OAuth authentication. Generated type-safe client code using GraphQL codegen for seamless frontend integration"
+        - "Rich Mobile UX: Developed React Native frontend with Apollo GraphQL for data fetching. Created engaging user experience with custom Lottie animations for transaction flows, account linking, and investment progress visualization"
+        - "Financial Integration: Implemented secure bank account connectivity using Plaid API for real-time transaction monitoring with automated round-up calculations and crypto purchase execution"
+      link:
+        href: "https://github.com/sherodtaylor/sparecoins"
+        label: "sherodtaylor/sparecoins"
+        is_private: true
+      icon: "sparecoins"
+      gif: "sparecoins.gif"
+      demo:
+        title: "SpareCoins Mobile Demo"
+        description: "Interactive demonstration of the mobile application features and animations."
+        preview_text: "View Live Demo"
+        preview_subtitle: "Interactive mobile application showcase"
+      tags: ["React Native", "Golang", "GraphQL", "Apollo", "Lottie", "OAuth", "Echo", "Plaid", "Coinbase API", "FinTech"]
+    - name: "Home Lab Cluster"
+      description: "Self-hosted k3s cluster running every app my family actually depends on. Flux reconciles every manifest from sherodtaylor/homelab, Traefik fronts the lot with auto-renewed Let's Encrypt certs, ExternalSecrets pulls credentials from Infisical, and VictoriaMetrics + VictoriaLogs catch anything that drifts — so the house keeps running while I keep tinkering."
+      highlights:
+        - "Media + Entertainment: Jellyfin and Plex stream the family library, Jellyseerr handles requests, the *arr stack (Sonarr, Radarr, Lidarr, Prowlarr) automates discovery, qBittorrent and Sabnzbd handle downloads, Audiobookshelf catalogues the audiobook collection"
+        - "Photos + Files + Storage: Immich runs face recognition over years of family photos, Nextcloud hosts personal files, TrueNAS (8 TB via NFS) backs every stateful service in the cluster"
+        - "Home Automation: Home Assistant runs the house — lights, thermostats, schedules, sensors across the home — all on the same cluster, not a separate appliance"
+        - "Observability Built-in: VictoriaMetrics + VictoriaLogs ingest every pod's metrics and logs; Grafana dashboards and Alertmanager catch regressions before they become outages"
+        - "GitOps All the Way Down: Flux reconciles every Kustomization and HelmRelease from sherodtaylor/homelab; cert-manager + kubernetes-replicator handle TLS across namespaces; the cluster rebuilds from a single git push"
+      link:
+        href: "https://github.com/sherodtaylor/homelab"
+        label: "sherodtaylor/homelab"
+        is_private: false
+      icon: "Server"
+      gif: "homelab-dashboard.png"
+      demo:
+        title: "Home Lab Dashboard"
+        description: "Live view of services running on the k3s cluster — media, photos, automation, observability, storage."
+        preview_text: "View Dashboard"
+        preview_subtitle: "Live service grid from the cluster"
+      tags: ["Proxmox", "k3s", "Flux GitOps", "Helm", "Traefik", "cert-manager", "ExternalSecrets", "Infisical", "TrueNAS", "Home Assistant", "Jellyfin", "Plex", "Immich", "Nextcloud", "Audiobookshelf", "Sonarr", "Radarr", "Prowlarr", "qBittorrent", "VictoriaMetrics", "VictoriaLogs", "Grafana", "Alertmanager", "Let's Encrypt"]
+    - name: "Dotfiles"
+      description: "Maintained comprehensive dotfiles and development environment configurations for consistent, reproducible development setups across multiple systems."
+      highlights:
+        - "Cross-Platform Configuration: Unified development environment setup for macOS and Linux systems"
+        - "Editor Configuration: Advanced Neovim configurations with language servers and productivity enhancements"
+      link:
+        href: "https://github.com/sherodtaylor/dotfiles"
+        label: "sherodtaylor/dotfiles"
+        is_private: false
+      icon: "Settings"
+      tags: ["Neovim", "Zsh", "Git", "Tmux", "Shell", "macOS", "Linux", "Docker"]
+
+community:
+  title: "Community & Leadership"
+  description: "Giving back through mentorship and volunteer work"
+  activities:
+    - title: "Bloomberg Diversity Interview Prep Bootcamp"
+      role: "Volunteer Instructor & Mentor"
+      duration: "6-month program"
+      type: "Mentorship"
+      icon: "GraduationCap"
+      color: "from-blue-500/20 to-indigo-500/20"
+      description: "A comprehensive bootcamp program designed to train underrepresented candidates for technical interviews through mentoring and hands-on training from Bloomberg engineers. Provides 1:1 guidance, curriculum development, and mock interview preparation."
+      achievements:
+        - "Designed and delivered Systems Design curriculum"
+        - "Took on 1:1 mentee and prepared them for coding interviews"
+        - "Provided weekly mock interviews and detailed feedback sessions"
+        - "Followed training schedule for 6 months: algos, system design, coding interviews"
+    - title: "Bloomberg Community Service Leadership"
+      role: "Community Service Leader"
+      duration: "Ongoing"
+      type: "Volunteer"
+      icon: "Heart"
+      color: "from-pink-500/20 to-rose-500/20"
+      description: "Leading community service initiatives within Bloomberg engineering teams, organizing volunteer activities and coordinating outreach programs to support local NYC communities."
+      achievements:
+        - "Logged 15+ volunteer hours in past year"
+        - "Mobilized multiple engineering teams for community service"
+        - "Coordinated homeless aid initiatives and care package distribution"
+        - "Organized NYC park cleanup efforts"
+
+sections:
+  latest_articles:
+    title: "Latest Articles"
+    description: "Thoughts on software development, leadership, and technology"
+    max_count: 3

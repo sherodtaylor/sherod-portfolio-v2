@@ -1,0 +1,75 @@
+name: resume
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'config.yaml'
+      - 'generate-resume.py'
+      - 'resume-template.tex'
+      - 'Makefile'
+      - '.github/workflows/resume.yml'
+  pull_request:
+    paths:
+      - 'config.yaml'
+      - 'generate-resume.py'
+      - 'resume-template.tex'
+      - 'Makefile'
+      - '.github/workflows/resume.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install LaTeX and PyYAML
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-latex-extra \
+            fontconfig \
+            python3-yaml
+
+      - name: Install Fira Code Nerd Font Mono
+        run: |
+          mkdir -p ~/.local/share/fonts
+          curl -fsSL -o /tmp/firacode.zip \
+            https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+          unzip -o /tmp/firacode.zip -d ~/.local/share/fonts/firacode
+          fc-cache -f
+          fc-list | grep -q "FiraCode Nerd Font Mono"
+
+      - name: Build resume PDF
+        run: |
+          make clean
+          make all
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: public/resume.pdf
+          retention-days: 30
+
+      - name: Commit regenerated PDF (main only)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          if git diff --quiet -- public/resume.pdf 2>/dev/null; then
+            echo "no drift — nothing to commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/resume.pdf
+          git commit -m "chore(resume): regenerate from config.yaml [skip ci]"
+          git push
