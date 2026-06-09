@@ -6,15 +6,13 @@ personal:
   title: "Platform Engineering Manager @ Bloomberg"
   location: "New York, NY"
   tagline: "Hi I'm Sherod"
-  description: "I'm a Platform Engineering Manager at Bloomberg, leading two teams (10 engineers) building AI tooling and the developer platform 9,000+ engineers ship on every day. I've spent 12+ years turning infrastructure into leverage for other teams — most recently making internal platform APIs callable by AI agents end-to-end. Off-hours, I run a home lab of three Claude Code agents that open and review their own PRs."
+  description: "Platform Engineering Manager at Bloomberg. I lead two teams (10 engineers) building AI tooling for the platform 9,000+ engineers ship on daily. 12+ years turning infra into leverage. Off-hours: three Claude Code agents in a home lab that open and review their own PRs."
   # Multi-paragraph About for the website only. The single-paragraph
-  # `description` above stays the LaTeX-resume header bio + the OG/meta
-  # blurb. Split here addresses Prad 2026-06-09: "content is chunked
-  # better, it's not just a big blob of words."
+  # `description` above feeds the LaTeX-resume header + OG/meta blurb.
   about:
-    - "I'm a Platform Engineering Manager at Bloomberg, leading two teams — 10 engineers total — building AI tooling and the developer platform that 9,000+ engineers ship on every day."
-    - "I've spent 12+ years turning infrastructure into leverage for other teams. Most recently that means making our internal platform APIs callable by AI agents end-to-end: identity, gateway, and the libraries other teams use to ship."
-    - "Off-hours, I run a home lab of three Claude Code agents — devbot, infrabot, pmbot — that open and review their own PRs. That work is open source under agent-smith and homelab."
+    - "I lead two engineering teams at Bloomberg (10 people) building AI tooling and the platform 9,000+ engineers ship on daily."
+    - "12+ years of turning infrastructure into leverage for other teams. Lately: making our internal APIs callable by AI agents end-to-end — identity, gateway, and the libraries product teams use to ship."
+    - "Off-hours, I run a home lab of three Claude Code agents — devbot, infrabot, pmbot — that open and review their own PRs. Open source as agent-smith and homelab."
   availability:
     status: "Open for new opportunities"
     active: true
@@ -127,13 +125,13 @@ experience:
       location: "New York, NY"
       type: "Full-time"
       logo: "bbg"
-      description: "Platform Engineering Manager leading two teams (10 engineers) building AI tooling and the developer platform that powers 9,000+ Bloomberg engineers. Focused on making internal platform APIs callable by AI agents end-to-end alongside the human users they already serve."
+      description: "Two teams, 10 engineers, building AI tooling for the internal developer platform that 9,000+ engineers ship on daily. Focus: making our APIs callable by AI agents end-to-end."
       achievements:
-        - "Lead two engineering teams (10 engineers total) covering AI platform tooling and the internal developer platform"
-        - "Drove the bridge from the team's API surface to agentic developer tools — internal libraries, gateway changes, and identity work so AI agents authenticate as first-class clients alongside humans"
-        - "Founded the team's microfrontend framework (Vite + Module Federation): other product teams self-serve onto the platform with full auth, deployment, and shared UI primitives — collapsing a former central-team bottleneck"
-        - "Coach engineers to work ahead via POCs in the margin: validate a direction, surface real constraints, graduate the work into the roadmap with known tradeoffs"
-        - "Stay hands-on in the codebase — model the working-ahead behavior I expect from the team and run POCs alongside ICs"
+        - "Lead two engineering teams (10 people) — AI platform tooling and the internal developer platform"
+        - "Bridged the platform's API surface to agentic developer tools: identity, gateway, and libraries so AI agents authenticate as first-class clients alongside humans"
+        - "Founded the team's microfrontend framework (Vite + Module Federation) — product teams self-serve onto the platform with auth, deployment, and shared UI primitives baked in"
+        - "Coach engineers to work ahead via POCs in the margin — surface real constraints, graduate the work into the roadmap with known tradeoffs"
+        - "Stay hands-on in the codebase — model the working-ahead instinct I expect from the team"
       technologies: ["Go", "TypeScript", "React", "Module Federation", "Kubernetes", "Observability", "Python", "AI / LLM tooling"]
       color: "from-orange-500/20 to-red-500/20"
     - company: "Bloomberg LP"
@@ -143,12 +141,12 @@ experience:
       location: "New York, NY"
       type: "Full-time"
       logo: "bbg"
-      description: "Founding engineer on Bloomberg's internal infrastructure provisioning platform. Architected full-stack software for the platform from day one and grew into a tech-lead role while staying hands-on in the codebase."
+      description: "Founding engineer on Bloomberg's internal infrastructure provisioning platform. Grew into a tech-lead role while staying in the codebase."
       achievements:
-        - "Founding engineer on the internal infrastructure provisioning platform — designed the allocation lifecycle state machine, API-level observability instrumentation, and the workflow analytics stack used to drive SLO definition and capacity planning"
-        - "Built the platform's unified API gateway as the external API surface for managed infrastructure — single consistent contract regardless of which underlying system serves the request"
-        - "Designed and shipped the API-level observability layer (per-endpoint metrics, per-team SLO dashboards, runtime-switchable) before the team had any API observability"
-        - "Grew into tech-lead role while staying hands-on — modeled the working-ahead instinct that became how the team operates"
+        - "Founding engineer — designed the allocation lifecycle state machine, API-level observability, and the workflow analytics stack the team used to define SLOs and capacity"
+        - "Built the platform's unified API gateway — single contract for managed infrastructure regardless of the underlying system"
+        - "Shipped the API observability layer (per-endpoint metrics, per-team SLO dashboards, runtime-switchable) before the team had any"
+        - "Grew into tech-lead — modeled the working-ahead instinct that became how the team operates"
       technologies: ["Python", "Go", "JavaScript", "React", "Node.js", "Module Federation", "GraphQL", "Observability", "Kubernetes"]
       color: "from-orange-500/20 to-red-500/20"
     - company: "Paxos (formerly itBit)"
@@ -187,14 +185,13 @@ experience:
 projects:
   items:
     - name: "agent-smith"
-      description: "Autonomous AI engineering teammates that live inside the home lab cluster and treat Matrix as the input channel. Tag a bot, it opens a PR; tag the other bot, it reviews; the product-manager bot owns PRDs and roadmap. They auto-address review comments, use the cluster's own observability stack via MCP, and never hold the real credentials — those stay behind an egress proxy at the cluster edge. Packaged as a public Helm chart anyone can deploy."
+      description: "Autonomous AI engineering teammates running in a home-lab Kubernetes cluster. Matrix is the input. Tag a bot, it opens a PR; tag another, it reviews. They never hold real credentials — those stay behind an egress proxy. Public Helm chart."
       highlights:
-        - "Three-Agent Crew, One Parametric Image: DevBot (code), InfraBot (k3s/Flux), and PMBot (product/PRDs) run as separate StatefulSets from the same ghcr.io/sherodtaylor/agent-smith image. Per-agent persona, MCP config, and subagents live under agents/<name>/; the shared base CLAUDE.md is one ConfigMap"
-        - "Matrix-Driven, Autonomous PR Workflow: Messages in #dev / #infra are real Claude Code prompts. After opening a PR the author mentions the other bot for review; the reviewer runs the code-review skill and posts inline findings. A Stop-hook re-wakes the author on unaddressed comments so iteration happens without a human in the loop"
-        - "Egress Credential Firewall (iron-proxy): Productionized so agents never hold real GitHub or Anthropic tokens — iron-proxy MITMs egress with a private CA and swaps placeholder tokens for real credentials per-host against a domain allowlist. A compromised pod leaks nothing useful"
-        - "MCP for Everything Observable: VictoriaMetrics + VictoriaLogs MCP servers, a stdio NATS MCP server for the durable event log, and the Matrix channel plugin for inputs. 'Check the api-latency dashboard' becomes a single prompt"
-        - "Two-Pane Runtime: Each pod runs claude in tmux — pane 0 owns the Matrix identity, pane 1 runs a second claude --remote-control with its own $HOME so humans can attach via kubectl exec or the Claude desktop/web app"
-        - "Public OSS Distribution: image (ghcr.io/sherodtaylor/agent-smith) and Helm chart (oci://ghcr.io/sherodtaylor/charts/agent-smith) ship every release; framework docs at sherodtaylor.github.io/agent-smith"
+        - "Three agents, one image: DevBot (code), InfraBot (k3s/Flux), PMBot (product/PRDs) run as separate StatefulSets from the same parametric image. Per-agent persona is a directory under agents/<name>/"
+        - "Matrix-driven PR workflow: messages in #dev / #infra are real Claude Code prompts. Author opens a PR; the other agent reviews and posts inline findings. A Stop-hook re-wakes the author on unaddressed comments — iteration without a human in the loop"
+        - "Egress credential firewall (iron-proxy): agents never hold real GitHub or Anthropic tokens. iron-proxy MITMs egress and swaps placeholders for real creds per-host against an allowlist. A compromised pod leaks nothing useful"
+        - "MCP for the cluster's own observability: VictoriaMetrics, VictoriaLogs, NATS, and the Matrix channel are all MCP servers. 'Check the api-latency dashboard' is one prompt"
+        - "Public OSS: image at ghcr.io/sherodtaylor/agent-smith, Helm chart at oci://ghcr.io/sherodtaylor/charts/agent-smith"
       link:
         href: "https://github.com/sherodtaylor/agent-smith"
         label: "sherodtaylor/agent-smith"
@@ -224,13 +221,12 @@ projects:
         preview_subtitle: "Interactive mobile application showcase"
       tags: ["React Native", "Golang", "GraphQL", "Apollo", "Lottie", "OAuth", "Echo", "Plaid", "Coinbase API", "FinTech"]
     - name: "Home Lab Cluster"
-      description: "Self-hosted k3s cluster running every app my family actually depends on. Flux reconciles every manifest from sherodtaylor/homelab, Traefik fronts the lot with auto-renewed Let's Encrypt certs, ExternalSecrets pulls credentials from Infisical, and VictoriaMetrics + VictoriaLogs catch anything that drifts — so the house keeps running while I keep tinkering."
+      description: "Self-hosted k3s cluster running every app my family depends on. Flux reconciles from one git repo, ExternalSecrets pulls creds from Infisical, VictoriaMetrics + VictoriaLogs catch drift. Family-grade, GitOps-managed."
       highlights:
-        - "Media + Entertainment: Jellyfin and Plex stream the family library, Jellyseerr handles requests, the *arr stack (Sonarr, Radarr, Lidarr, Prowlarr) automates discovery, qBittorrent and Sabnzbd handle downloads, Audiobookshelf catalogues the audiobook collection"
-        - "Photos + Files + Storage: Immich runs face recognition over years of family photos, Nextcloud hosts personal files, TrueNAS (8 TB via NFS) backs every stateful service in the cluster"
-        - "Home Automation: Home Assistant runs the house — lights, thermostats, schedules, sensors across the home — all on the same cluster, not a separate appliance"
-        - "Observability Built-in: VictoriaMetrics + VictoriaLogs ingest every pod's metrics and logs; Grafana dashboards and Alertmanager catch regressions before they become outages"
-        - "GitOps All the Way Down: Flux reconciles every Kustomization and HelmRelease from sherodtaylor/homelab; cert-manager + kubernetes-replicator handle TLS across namespaces; the cluster rebuilds from a single git push"
+        - "Media + photos + files: Jellyfin, Plex, Immich (face-recognition over years of family photos), Nextcloud, Audiobookshelf — all running on the cluster, backed by TrueNAS NFS"
+        - "Home Automation: Home Assistant — lights, thermostats, schedules, sensors — on the same cluster, not a separate appliance"
+        - "Observability built-in: every pod's metrics and logs land in VictoriaMetrics / VictoriaLogs. Grafana + Alertmanager catch regressions before they become outages"
+        - "GitOps all the way down: Flux reconciles every Kustomization and HelmRelease. cert-manager + kubernetes-replicator handle TLS. The cluster rebuilds from a single git push"
       link:
         href: "https://github.com/sherodtaylor/homelab"
         label: "sherodtaylor/homelab"
