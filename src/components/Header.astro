@@ -2,13 +2,7 @@
 import { loadConfig } from '../lib/config';
 
 const { personal, contact } = loadConfig();
-
-// One-line status pulled from /now content. The /now page owns the longer
-// body; the home page surfaces just the lead line.
-import { getCollection } from 'astro:content';
-const nowEntries = await getCollection('now');
-const nowEntry = nowEntries[0];
-const status = nowEntry?.data.oneliner;
+// /now status moved to the top TmuxBar; no need to duplicate here.
 ---
 <header>
   <h1>{personal.name}</h1>
@@ -21,11 +15,6 @@ const status = nowEntry?.data.oneliner;
     <li><a href={contact.linkedin} rel="me">linkedin</a></li>
     <li><a href={`${import.meta.env.BASE_URL}/resume.pdf`}>resume</a></li>
   </ul>
-  {status && (
-    <p class="now">
-      <a href={`${import.meta.env.BASE_URL}/now`}>now</a>{' '}<span class="muted">·</span>{' '}{status}
-    </p>
-  )}
 </header>
 
 <style>
@@ -40,5 +29,4 @@ const status = nowEntry?.data.oneliner;
     gap: var(--space-1) var(--space-4);
   }
   .contact li { margin: 0; }
-  .now { margin-top: var(--space-4); font-size: var(--fs-small); }
 </style>

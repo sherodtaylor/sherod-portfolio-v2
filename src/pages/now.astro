@@ -8,7 +8,7 @@ const entry = entries[0];
 if (!entry) throw new Error('content/now/now.md missing');
 const { Content } = await entry.render();
 ---
-<BaseLayout title="now" description={entry.data.oneliner} pageType="page">
+<BaseLayout title="now" description={entry.data.oneliner} pageType="page" sessionName="0:now">
   <p class="back"><a href={import.meta.env.BASE_URL}>← home</a></p>
   <h1>now</h1>
   <p class="muted">Updated {entry.data.updated.toISOString().slice(0, 10)}</p>

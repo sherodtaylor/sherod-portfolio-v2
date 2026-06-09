@@ -16,25 +16,9 @@ const year = new Date().getFullYear();
     {' '}and his homelab fleet.
   </p>
   <p class="meta muted">
-    <span>{personal.name} · NYC · {year}</span>
-    <button id="theme-toggle" type="button" aria-label="Toggle light/dark theme">
-      toggle theme
-    </button>
+    {personal.name} · NYC · {year}
   </p>
 </footer>
-
-<script is:inline>
-  (() => {
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch { /* ignore */ }
-    });
-  })();
-</script>
 
 <style>
   footer {
@@ -46,26 +30,5 @@ const year = new Date().getFullYear();
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
   }
-  .meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-4);
-    margin: 0;
-  }
-  #theme-toggle {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--fg-muted);
-    font-family: var(--font-mono);
-    font-size: var(--fs-small);
-    padding: var(--space-1) var(--space-3);
-    cursor: pointer;
-    border-radius: 3px;
-  }
-  #theme-toggle:hover, #theme-toggle:focus-visible {
-    color: var(--fg);
-    border-color: var(--accent);
-    outline: none;
-  }
+  .meta { margin: 0; }
 </style>

@@ -1,0 +1,119 @@
+---
+/*
+ * Tmux-style status bar across the top of every page.
+ *
+ * Borrows the agent-smith TmuxStatusBar shape (brackets, middot
+ * separators, all-mono) and keeps it restrained per SOUL.md:
+ *   - text only, no animations, no blinking cursor
+ *   - no fake terminal prompts ("$ cd /projects" → banned)
+ *   - functional content only: site label, /now status, theme toggle
+ *
+ * If you find yourself adding ASCII art, color stripes, or a marquee
+ * here — stop. That's the kitsch line SOUL.md draws.
+ */
+import { getCollection } from 'astro:content';
+
+interface Props { sessionName?: string; }
+const { sessionName = '0:home' } = Astro.props;
+
+const nowEntries = await getCollection('now');
+const status = nowEntries[0]?.data.oneliner ?? '';
+---
+<div class="tmux-bar" role="banner">
+  <span class="left">
+    <span class="bracket">[</span>sherodtaylor.dev<span class="bracket">]</span>
+    <span class="bracket">[</span>{sessionName}<span class="bracket">]</span>
+  </span>
+  <span class="right">
+    {status && (
+      <span class="status">
+        <a href={`${import.meta.env.BASE_URL}/now`}>now</a>
+        <span class="bracket"> · </span>
+        <span class="muted">{status}</span>
+      </span>
+    )}
+    <button
+      id="theme-toggle"
+      type="button"
+      aria-label="Toggle theme"
+      title="Toggle theme"
+    >
+      <span class="bracket">[</span><span class="theme-label">theme</span><span class="bracket">]</span>
+    </button>
+  </span>
+</div>
+
+<script is:inline>
+  (() => {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch { /* ignore */ }
+    });
+  })();
+</script>
+
+<style>
+  .tmux-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    background: var(--bg-elev);
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--border);
+    /* Span the viewport — looks like a real status bar, not a card. */
+    margin: calc(var(--space-12) * -1) calc(var(--space-6) * -1) var(--space-12);
+  }
+  .left, .right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+  .right { gap: var(--space-3); }
+  .bracket { color: color-mix(in srgb, var(--fg-muted) 55%, transparent); }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60ch;
+  }
+  .status a { color: var(--fg); border-bottom-color: transparent; }
+  .status a:hover, .status a:focus-visible { color: var(--accent); }
+  .muted { color: var(--fg-muted); }
+
+  #theme-toggle {
+    background: transparent;
+    border: 0;
+    color: var(--fg-muted);
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+  #theme-toggle:hover .theme-label,
+  #theme-toggle:focus-visible .theme-label {
+    color: var(--accent);
+  }
+  #theme-toggle:focus-visible { outline: none; }
+
+  @media (max-width: 640px) {
+    .tmux-bar {
+      flex-wrap: wrap;
+      margin: calc(var(--space-6) * -1) calc(var(--space-4) * -1) var(--space-6);
+      padding: var(--space-2) var(--space-3);
+    }
+    .status { max-width: 100%; }
+  }
+</style>
