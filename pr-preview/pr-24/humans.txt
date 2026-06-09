@@ -1,0 +1,20 @@
+/* TEAM */
+
+  Author: Sherod Taylor
+  Site: https://sherodtaylor.dev
+  Email: sherodtaylor@gmail.com
+  GitHub: @sherodtaylor
+  LinkedIn: /in/sherodtaylor
+  Location: New York, NY
+
+/* SITE */
+
+  Source: https://github.com/sherodtaylor/sherod-portfolio-v2
+  Brand: SOUL.md at repo root
+  Stack: Astro · Geist Mono · GitHub Pages
+  Resume: Generated from config.yaml via LaTeX (FiraCode Nerd Font) on every deploy
+  AI agents: This site is built and maintained in collaboration with Claude Code
+
+/* THANKS */
+
+  Jin · Prad — early read-throughs and brand feedback

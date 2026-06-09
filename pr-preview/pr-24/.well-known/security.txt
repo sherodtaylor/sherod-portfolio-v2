@@ -1,0 +1,9 @@
+# If you've found a security issue with sherodtaylor.dev, please reach out.
+# This is a personal portfolio + agent fleet — most reports will be about the
+# linked OSS repos (sherodtaylor/agent-smith, sherodtaylor/homelab); please
+# include the repo + path in the subject line so I can route correctly.
+
+Contact: mailto:sherodtaylor@gmail.com
+Expires: 2027-06-09T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://sherodtaylor.dev/.well-known/security.txt
