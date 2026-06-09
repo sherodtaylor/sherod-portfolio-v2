@@ -51,12 +51,14 @@
                   SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
                   monospace;
 
-  /* Mono needs more vertical breathing than sans — SOUL.md typography rule. */
-  --fs-body:      15px;
-  --fs-small:     13px;
-  --fs-h1:        24px;
-  --fs-h2:        17px;
-  --fs-h3:        15px;
+  /* Body shrunk to 14px per Jin 2026-06-09; small and H3 follow for
+     proportion. Mono still needs generous line-height; that lives in
+     global.css. */
+  --fs-body:      14px;
+  --fs-small:     12px;
+  --fs-h1:        22px;
+  --fs-h2:        15px;
+  --fs-h3:        14px;
   --lh-body:      1.65;
   --lh-tight:     1.35;
 
