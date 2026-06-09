@@ -19,7 +19,7 @@ const status = nowEntry?.data.oneliner;
     <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
     <li><a href={contact.github} rel="me">github</a></li>
     <li><a href={contact.linkedin} rel="me">linkedin</a></li>
-    <li><a href={contact.website} rel="me">sherodtaylor.dev</a></li>
+    <li><a href={`${import.meta.env.BASE_URL}/resume.pdf`}>resume</a></li>
   </ul>
   {status && (
     <p class="now">
