@@ -21,13 +21,15 @@
 
 :root,
 :root[data-theme='dark'] {
-  /* Surface */
-  --bg:          #0d1117;            /* near-black, GitHub-dark; not pure-black */
-  --bg-elev:     #161b22;
-  --fg:          #c9d1d9;            /* body text */
-  --fg-muted:   #8b949e;             /* secondary */
-  --border:     #21262d;             /* hairline */
-  --accent:     #79c0ff;             /* single accent — links, current-role marker */
+  /* Surface — Jin 2026-06-09 "tweak slightly": background nudged darker
+     for a touch more contrast; accent shifted slightly muted away from
+     GitHub-blue. */
+  --bg:          #0a0c10;
+  --bg-elev:     #14181f;
+  --fg:          #d3d7dc;
+  --fg-muted:   #8b929c;
+  --border:     #1f242c;
+  --accent:     #6fb6f0;
 
   color-scheme: dark;
 }
