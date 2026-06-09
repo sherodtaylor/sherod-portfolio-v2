@@ -1,0 +1,58 @@
+---
+/*
+ * Section pane — borrows the tmux-pane shape (sharp hairline borders +
+ * inset label at top-left) to give Prad's "chunking" without the
+ * marketing-card shape SOUL.md bans.
+ *
+ * Rules to keep this inside SOUL.md restraint:
+ *   - 1px hairline border, var(--border) color, no shadow
+ *   - sharp corners (border-radius: 0). Cards round; tmux panes don't.
+ *   - no background fill — inherits page bg so it reads like chrome, not surface
+ *   - vertical stack only, never a grid. One pane per section, full column width.
+ *   - label is just the existing H2 styling lifted into the border gap;
+ *     no decorative ::before / colored bars
+ *
+ * If you find yourself adding rounded corners, shadows, or a 2nd column —
+ * stop. That's the card line.
+ */
+
+interface Props { label: string; id?: string; }
+const { label, id } = Astro.props;
+const labelId = id ?? `pane-${label.toLowerCase().replace(/\s+/g, '-')}`;
+---
+<section class="pane" aria-labelledby={labelId}>
+  <h2 id={labelId} class="pane-label">{label}</h2>
+  <div class="pane-body">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .pane {
+    border: 1px solid var(--border);
+    padding: var(--space-6) var(--space-6) var(--space-6);
+    margin: 0 0 var(--space-8);
+    position: relative;
+  }
+  .pane:last-of-type { margin-bottom: 0; }
+
+  /* Inset label sits on the top border, like a tmux window title. */
+  .pane-label {
+    position: absolute;
+    top: calc(var(--fs-h2) * -0.6);
+    left: var(--space-4);
+    background: var(--bg);
+    padding: 0 var(--space-2);
+    margin: 0;
+    /* Inherits global h2 styling (uppercase, tracked, muted) — no
+       overrides needed here. */
+  }
+
+  @media (max-width: 640px) {
+    .pane {
+      padding: var(--space-5) var(--space-4) var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .pane-label { left: var(--space-3); }
+  }
+</style>
