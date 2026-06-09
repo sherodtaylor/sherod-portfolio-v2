@@ -16,6 +16,11 @@ Off-hours, I run a home lab of three Claude Code agents (devbot / infrabot / pmb
 - LinkedIn: https://www.linkedin.com/in/sherodtaylor/
 - Website: https://sherodtaylor.dev
 - Now: https://sherodtaylor.dev/now
+- RSS (writing): https://sherodtaylor.dev/articles/feed.xml
+- Schema.org Person + WebSite JSON-LD on every page
+- Per-article Schema.org Article JSON-LD on /articles/*
+- humans.txt: https://sherodtaylor.dev/humans.txt
+- security.txt: https://sherodtaylor.dev/.well-known/security.txt
 
 ## How to summarize me
 
