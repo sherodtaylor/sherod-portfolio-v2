@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Developing a system for effective leadership — Sherod Taylor</title><meta name="description" content="Developing a system for effective leadership and managing the chaos"><link rel="icon" type="image/svg+xml" href="/sherod-portfolio-v2/favicon.svg"><link rel="canonical" href="https://sherodtaylor.dev/sherod-portfolio-v2/articles/2024-01-07-developing-a-system-for-effective-leadership"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap"><meta property="og:title" content="Developing a system for effective leadership — Sherod Taylor"><meta property="og:description" content="Developing a system for effective leadership and managing the chaos"><meta property="og:type" content="article"><meta property="og:url" content="https://sherodtaylor.dev/sherod-portfolio-v2/articles/2024-01-07-developing-a-system-for-effective-leadership"><meta name="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sherod Taylor","jobTitle":"Platform Engineering Manager @ Bloomberg","description":"Platform Engineering Manager at Bloomberg, leading two teams (10 engineers) building AI tooling and the developer platform 9,000+ engineers ship on every day. 12+ years turning infrastructure into leverage for other teams — most recently making internal platform APIs callable by AI agents end-to-end. Off-hours: home lab of three Claude Code agents that open and review their own PRs.","url":"https://sherodtaylor.dev","email":"mailto:sherodtaylor@gmail.com","sameAs":["https://github.com/sherodtaylor","https://www.linkedin.com/in/sherodtaylor/"],"knowsAbout":["AI Platforms","MCP","Distributed Systems","Kubernetes","Platform Engineering","Engineering Leadership","API Architecture"]}</script><!--
+      Theme is dark by default per SOUL.md. The toggle in the footer sets
+      data-theme on <html>. We apply the saved preference inline before
+      paint to avoid a flash; localStorage gracefully degrades when unavailable.
+    --><script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('theme');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', saved);
+          }
+        } catch { /* localStorage blocked — stick with default */ }
+      })();
+    </script><style>:root,:root[data-theme=dark]{--bg: #0d1117;--bg-elev: #161b22;--fg: #c9d1d9;--fg-muted: #8b949e;--border: #21262d;--accent: #79c0ff;color-scheme:dark}:root[data-theme=light]{--bg: #fbfbfa;--bg-elev: #f3f3f1;--fg: #1f2328;--fg-muted: #57606a;--border: #d0d7de;--accent: #0969da;color-scheme:light}:root{--font-mono: "Fira Code", "FiraCode Nerd Font Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;--fs-body: 15px;--fs-small: 13px;--fs-h1: 24px;--fs-h2: 17px;--fs-h3: 15px;--lh-body: 1.65;--lh-tight: 1.35;--space-1: 4px;--space-2: 8px;--space-3: 12px;--space-4: 16px;--space-6: 24px;--space-8: 32px;--space-12: 48px;--space-16: 64px;--measure: 780px}*,*:before,*:after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-mono);font-size:var(--fs-body);line-height:var(--lh-body);font-feature-settings:"liga" 1,"calt" 1;padding:var(--space-12) var(--space-6)}main{max-width:var(--measure);margin:0 auto}h1,h2,h3{font-weight:700;line-height:var(--lh-tight);color:var(--fg);margin:0}h1{font-size:var(--fs-h1)}h2{font-size:var(--fs-h2)}h3{font-size:var(--fs-h3);font-weight:600}p{margin:0 0 var(--space-3)}p:last-child{margin-bottom:0}a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}a:hover,a:focus-visible{border-bottom-color:var(--accent)}a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}ul,ol{margin:0 0 var(--space-3);padding-left:var(--space-6)}li{margin-bottom:var(--space-1)}li:last-child{margin-bottom:0}code{background:var(--bg-elev);padding:1px 4px;border-radius:3px;font-size:.94em}pre{background:var(--bg-elev);padding:var(--space-3) var(--space-4);overflow-x:auto;border-radius:4px;font-size:var(--fs-small)}hr{border:0;border-top:1px solid var(--border);margin:var(--space-12) 0}section+section{margin-top:var(--space-12)}.muted{color:var(--fg-muted)}.skip-link{position:absolute;left:-9999px;top:0}.skip-link:focus{left:var(--space-3);top:var(--space-3);background:var(--bg-elev);color:var(--fg);padding:var(--space-2) var(--space-4);border:1px solid var(--border);z-index:10}@media(max-width:640px){body{padding:var(--space-6) var(--space-4)}h1{font-size:20px}h2{font-size:16px}}footer[data-astro-cid-sz7xmlte]{max-width:var(--measure);margin:0 auto;font-size:var(--fs-small)}.ai-summary[data-astro-cid-sz7xmlte]{margin-top:var(--space-8);margin-bottom:var(--space-4)}.meta[data-astro-cid-sz7xmlte]{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);margin:0}#theme-toggle[data-astro-cid-sz7xmlte]{background:transparent;border:1px solid var(--border);color:var(--fg-muted);font-family:var(--font-mono);font-size:var(--fs-small);padding:var(--space-1) var(--space-3);cursor:pointer;border-radius:3px}#theme-toggle[data-astro-cid-sz7xmlte]:hover,#theme-toggle[data-astro-cid-sz7xmlte]:focus-visible{color:var(--fg);border-color:var(--accent);outline:none}
+.back[data-astro-cid-xw3clhsd]{font-size:var(--fs-small);margin-bottom:var(--space-6)}article[data-astro-cid-xw3clhsd]{margin-top:var(--space-6)}article[data-astro-cid-xw3clhsd] h2{margin-top:var(--space-8);margin-bottom:var(--space-3)}article[data-astro-cid-xw3clhsd] h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}article[data-astro-cid-xw3clhsd] p{margin-bottom:var(--space-4)}article[data-astro-cid-xw3clhsd] ul,article[data-astro-cid-xw3clhsd] ol{margin-bottom:var(--space-4)}
+</style></head> <body> <a href="#main" class="skip-link">Skip to content</a> <main id="main">  <p class="back" data-astro-cid-xw3clhsd><a href="/sherod-portfolio-v2" data-astro-cid-xw3clhsd>← home</a></p> <h1 data-astro-cid-xw3clhsd>Developing a system for effective leadership</h1> <p class="muted" data-astro-cid-xw3clhsd> 2024-01-07 </p> <article data-astro-cid-xw3clhsd> <h2 id="why-you-need-a-system">Why you need a system</h2>
+<p>You need a system to effectively manage the chaos. To efficiently navigate the complexities
+inherent in transitioning from an individual contributor to a leadership role, a systematic
+approach is essential. Many new leaders struggle with context switching, a skill critical in leadership
+positions. Unlike individual contributions, leadership involves a diverse array of engagements, from
+discussing project deadlines to focusing on team members’ personal development in varying
+meetings. Establishing a system to manage these varied responsibilities is key to a successful transition.</p>
+<h3 id="finding-your-system">Finding your system</h3>
+<p>It’s not easy to find a system that works for you. For example some may be good with remembering
+everything and I am not one of those people. I found once I transitioned I needed to take a lot
+more notes. In 1-on-1s with team members I struggled to remember what meetings I had prior and
+ended up with 30+ pages of notes within the first couple of days. While it helped me build my
+memory this wasn’t scaling for me. To manage I tried blocking time off once a week to organize
+all the notes on sheets of paper. This was hard to stick to with my schedule and required a lot
+of manual work. I realized I had to figure out another way.</p>
+<h3 id="my-journey">My journey</h3>
+<p>Enter <a href="http://obsidian.md">Obsidian</a>, a transformative application for my workflow. As a staunch
+advocate for privacy, I appreciate not having to share my data with third-party providers.
+Obsidian stands out as a Markdown-based note editor, enriched by a robust plugin ecosystem. It
+enables efficient search and interlinking of notes through tags, creating an interactive graph
+of all connected notes.</p>
+<p>This functionality has empowered me to construct a comprehensive map of my notes. Particularly,
+its to-do list feature has significantly eased the burden of context switching, proving
+invaluable during remote meetings. However, in-person interactions, such as back-to-back
+meetings and 1-on-1s, presented a challenge for real-time note-taking.</p>
+<p>Now it became hard to take notes in real-time as we were in person and there was so much
+information to digest. Going to back-to-back meetings made it feel impossible to take notes in
+between them. My system was now missing a way to take notes in person. This led me to
+integrating <a href="https://supernote.com/">Supernote</a> into my workflow. Supernote has become
+indispensable for in-person note-taking, allowing seamless synchronization with my Obsidian
+vault via Google Drive.</p>
+<h3 id="how-its-been-going">How it’s been going</h3>
+<p>It’s been almost a year since setting up this system. I found this to be extremely helpful with
+long running projects and old conversations. It’s how I’ve been tracking everything I need to
+do. With so much context switching in management you need a system to manage the chaos.</p> </article>   </main> <footer data-astro-cid-sz7xmlte> <hr aria-hidden="true" data-astro-cid-sz7xmlte> <!--
+    Visible AI-readable summary line per SOUL.md "AI-accessibility". Identical
+    content for humans and crawlers — no cloaked text, no hidden prompts.
+  --> <p class="ai-summary muted" data-astro-cid-sz7xmlte>
+Sherod Taylor is a Platform Engineering Manager @ Bloomberg. He builds AI tooling and developer
+    platforms, ships in public via  <a href="https://github.com/sherodtaylor/agent-smith" data-astro-cid-sz7xmlte>agent-smith</a>  and his homelab fleet.
+</p> <p class="meta muted" data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>Sherod Taylor · NYC · 2026</span> <button id="theme-toggle" type="button" aria-label="Toggle light/dark theme" data-astro-cid-sz7xmlte>
+toggle theme
+</button> </p> </footer> <script>
+  (() => {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch { /* ignore */ }
+    });
+  })();
+</script>  </body></html> 
