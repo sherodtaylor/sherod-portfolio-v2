@@ -37,17 +37,22 @@ const labelId = id ?? `pane-${label.toLowerCase().replace(/\s+/g, '-')}`;
   .pane:last-of-type { margin-bottom: 0; }
 
   /* Inset label sits centered on the top border, like a tmux window
-     title. translateY(-50%) is the cleanest centering trick; line-height
-     1 collapses the label box to its content so the math is exact. */
+     title. Vertical padding gives ascenders/descenders room so the
+     label's bg cleanly clears the border line behind it — the
+     "chopped" look from a 0-padding version was the border showing
+     through the glyph midline. */
   .pane-label {
     position: absolute;
     top: 0;
     left: var(--space-4);
     transform: translateY(-50%);
     background: var(--bg);
-    padding: 0 var(--space-2);
+    padding: var(--space-1) var(--space-2);
     margin: 0;
     line-height: 1;
+    /* Override the global h2 margin-bottom from PR #7; absolute
+       positioning ignores it anyway but explicit beats implicit. */
+    margin-bottom: 0;
     /* Inherits global h2 styling (uppercase, tracked, muted) otherwise. */
   }
 
