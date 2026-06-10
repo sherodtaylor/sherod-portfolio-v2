@@ -15,6 +15,9 @@ personal:
     - "I lead by working ahead — POCs in the margin that graduate into the team's roadmap with known tradeoffs. My strategy: enable AI tooling deep into the platform so every engineer we serve gets force-multiplied."
     - "Off-hours: my k3s homelab runs agent-smith — an AI engineering agent workforce that ships in my sleep — alongside the family apps (Jellyfin, Audiobookshelf, grimmory)."
     - "The line between human and agent teammates is the next infrastructure frontier, and I'm working on both sides of it."
+  # Drives the minimal availability dot on the TmuxBar. Flip to `false`
+  # (or delete the field) when not actively interviewing.
+  openToWork: true
   availability:
     status: "Open for new opportunities"
     active: true

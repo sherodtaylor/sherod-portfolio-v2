@@ -7,7 +7,6 @@ interface Props {
   title?: string;
   description?: string;
   pageType?: 'home' | 'page';
-  sessionName?: string;
   /* Optional Article-shape metadata for /articles/[slug] — surfaces
      Schema.org Article JSON-LD so AI summarizers attribute the post
      correctly when they cite it. */
@@ -19,7 +18,7 @@ interface Props {
   };
 }
 
-const { title, description, pageType = 'page', sessionName, article } = Astro.props;
+const { title, description, pageType = 'page', article } = Astro.props;
 const config = loadConfig();
 
 const pageTitle = title
@@ -129,7 +128,7 @@ const articleJsonLd = article ? {
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
-    <TmuxBar sessionName={sessionName} />
+    <TmuxBar />
     <main id="main">
       <slot />
     </main>
