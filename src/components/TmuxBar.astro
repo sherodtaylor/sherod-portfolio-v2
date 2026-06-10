@@ -6,7 +6,12 @@
  * separators, all-mono) and keeps it restrained per SOUL.md:
  *   - text only, no animations, no blinking cursor
  *   - no fake terminal prompts ("$ cd /projects" → banned)
- *   - functional content only: site label, /now status, theme toggle
+ *   - functional content only: nav (home/now/writing), /now oneliner,
+ *     availability dot, theme toggle
+ *
+ * The left side is a real nav now — each bracketed "window" is a link
+ * to the matching route, the active one is accent-highlighted. The
+ * right side carries the /now oneliner status + availability + theme.
  *
  * If you find yourself adding ASCII art, color stripes, or a marquee
  * here — stop. That's the kitsch line SOUL.md draws.
@@ -14,37 +19,38 @@
 import { getCollection } from 'astro:content';
 import { loadConfig } from '../lib/config';
 
-interface Props { sessionName?: string; }
-const { sessionName = '0:home' } = Astro.props;
-
 const nowEntries = await getCollection('now');
 const status = nowEntries[0]?.data.oneliner ?? '';
 const openToWork = loadConfig().personal.openToWork === true;
 
-// Parse session name into [prefix, label]. Map known labels back to
-// routes so the part inside the brackets renders as a clickable link.
-// "0:home" → prefix "0", label "home" → linked to BASE_URL/.
-const sessionParts = sessionName.split(':');
-const sessionPrefix = sessionParts.length > 1 ? sessionParts.slice(0, -1).join(':') : '';
-const sessionLabel = sessionParts[sessionParts.length - 1] ?? sessionName;
-const routeMap: Record<string, string> = {
-  home: '',
-  now: '/now',
-  archive: '/archive',
-};
-const sessionHref = sessionLabel in routeMap
-  ? `${import.meta.env.BASE_URL}${routeMap[sessionLabel]}`
-  : null;
+// Nav model: every page renders the same three windows. The active one
+// is computed from the current pathname (after stripping BASE_URL),
+// matching tmux's "current window" highlight.
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
+const path = Astro.url.pathname.replace(new RegExp(`^${base}`), '') || '/';
+
+const nav = [
+  { idx: 0, label: 'home',    href: `${base}/`,        match: (p: string) => p === '/' },
+  { idx: 1, label: 'now',     href: `${base}/now`,     match: (p: string) => p.startsWith('/now') },
+  { idx: 2, label: 'writing', href: `${base}/archive`, match: (p: string) => p.startsWith('/archive') || p.startsWith('/articles') },
+];
 ---
 <div class="tmux-bar" role="banner">
-  <span class="left">
-    <span class="bracket">[</span>{sessionPrefix && (<>{sessionPrefix}<span class="bracket">:</span></>)}{sessionHref ? <a href={sessionHref} class="bar-link">{sessionLabel}</a> : sessionLabel}<span class="bracket">]</span>
-  </span>
+  <nav class="left" aria-label="Primary">
+    {nav.map((item) => {
+      const active = item.match(path);
+      return (
+        <a
+          href={item.href}
+          class:list={['nav-item', { 'is-active': active }]}
+          aria-current={active ? 'page' : undefined}
+        ><span class="bracket">[</span><span class="idx">{item.idx}</span><span class="bracket">:</span><span class="label">{item.label}</span><span class="bracket">]</span></a>
+      );
+    })}
+  </nav>
   <span class="right">
     {status && (
       <span class="status">
-        <a href={`${import.meta.env.BASE_URL}/now`} class="bar-link">now</a>
-        <span class="bracket"> · </span>
         <span class="oneliner">{status}</span>
       </span>
     )}
@@ -124,6 +130,31 @@ const sessionHref = sessionLabel in routeMap
     justify-content: flex-end;
   }
   .bracket { color: color-mix(in srgb, var(--fg-muted) 55%, transparent); }
+
+  /* Nav item — entire `[0:home]` bracketed label is one anchor. Inline
+     spans flow tight (no flex gaps) so the bracket label reads as a
+     single unit. Inactive items are muted; the active window gets the
+     accent treatment, matching tmux's current-window highlight. */
+  .nav-item {
+    display: inline-block;
+    color: var(--fg-muted);
+    text-decoration: none;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .nav-item:hover,
+  .nav-item:focus-visible {
+    color: var(--fg);
+  }
+  .nav-item:focus-visible { outline: none; }
+  .nav-item.is-active {
+    color: var(--accent);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  .nav-item.is-active .bracket {
+    color: color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+
   .status {
     display: inline-flex;
     align-items: center;
@@ -138,23 +169,11 @@ const sessionHref = sessionLabel in routeMap
     white-space: nowrap;
     color: var(--fg-muted);
   }
-  /* Bar-internal links — accent color + subtle underline. Used for the
-     session-label "home" inside [0:home] on the left and the /now anchor
-     on the right. Same shape both sides so they read as a matched pair. */
-  .bar-link {
-    color: var(--accent);
-    border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-    flex-shrink: 0;
-  }
-  .bar-link:hover, .bar-link:focus-visible {
-    border-bottom-color: var(--accent);
-  }
   .muted { color: var(--fg-muted); }
 
   /* Availability dot — tmux-status presence indicator. Single-word
-     label "open" matches the tmux convention (like "● active" or
-     "● online"); avoids LinkedIn's "open to work" recruiter-bait
-     register. Tooltip carries the longer brand-voice sentence. */
+     label "available" keeps the tmux register; tooltip carries the
+     longer brand-voice sentence. */
   .open {
     display: inline-flex;
     align-items: center;

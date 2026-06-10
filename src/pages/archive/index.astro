@@ -7,7 +7,7 @@ const nonTechnicalArticles = (await getCollection('articles'))
   .filter((a) => !a.data.technical)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<BaseLayout title="archive" description="Older non-technical posts" sessionName="2:archive">
+<BaseLayout title="archive" description="Older non-technical posts">
   <p class="back"><a href={import.meta.env.BASE_URL}>← home</a></p>
   <h1>archive</h1>
   <p class="muted">
