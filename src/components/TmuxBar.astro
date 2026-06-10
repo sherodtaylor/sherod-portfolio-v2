@@ -12,12 +12,14 @@
  * here — stop. That's the kitsch line SOUL.md draws.
  */
 import { getCollection } from 'astro:content';
+import { loadConfig } from '../lib/config';
 
 interface Props { sessionName?: string; }
 const { sessionName = '0:home' } = Astro.props;
 
 const nowEntries = await getCollection('now');
 const status = nowEntries[0]?.data.oneliner ?? '';
+const openToWork = loadConfig().personal.openToWork === true;
 
 // Parse session name into [prefix, label]. Map known labels back to
 // routes so the part inside the brackets renders as a clickable link.
@@ -44,6 +46,12 @@ const sessionHref = sessionLabel in routeMap
         <a href={`${import.meta.env.BASE_URL}/now`} class="bar-link">now</a>
         <span class="bracket"> · </span>
         <span class="oneliner">{status}</span>
+      </span>
+    )}
+    {openToWork && (
+      <span class="open" title="Open to new opportunities" aria-label="Open to new opportunities">
+        <span class="open-dot" aria-hidden="true">●</span>
+        <span class="open-label">open to work</span>
       </span>
     )}
     <button
@@ -138,6 +146,27 @@ const sessionHref = sessionLabel in routeMap
     border-bottom-color: var(--accent);
   }
   .muted { color: var(--fg-muted); }
+
+  /* Availability dot — minimal status-line presence indicator. The dot
+     itself is a soft positive-signal green (matches agent-smith's accent
+     family); the label stays muted so the indicator reads as chrome,
+     not a CTA. Hide the label on narrow screens — the dot + tooltip
+     carry the meaning. */
+  .open {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    flex-shrink: 0;
+    color: var(--fg-muted);
+  }
+  .open-dot {
+    color: #5fbf8d;
+    font-size: 1.05em;
+    line-height: 1;
+  }
+  @media (max-width: 640px) {
+    .open-label { display: none; }
+  }
 
   #theme-toggle {
     background: transparent;

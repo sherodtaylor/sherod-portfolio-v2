@@ -25,6 +25,9 @@ export interface Personal {
   // Multi-paragraph About for the website. Optional — falls back to
   // splitting `description` if absent. PDF resume always uses `description`.
   about?: string[];
+  // Drives the availability dot on the TmuxBar. Defaults to false when
+  // the YAML omits the field — the dot only shows when explicitly true.
+  openToWork?: boolean;
 }
 
 export interface ExperiencePosition {
