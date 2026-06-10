@@ -18,16 +18,30 @@ const { sessionName = '0:home' } = Astro.props;
 
 const nowEntries = await getCollection('now');
 const status = nowEntries[0]?.data.oneliner ?? '';
+
+// Parse session name into [prefix, label]. Map known labels back to
+// routes so the part inside the brackets renders as a clickable link.
+// "0:home" → prefix "0", label "home" → linked to BASE_URL/.
+const sessionParts = sessionName.split(':');
+const sessionPrefix = sessionParts.length > 1 ? sessionParts.slice(0, -1).join(':') : '';
+const sessionLabel = sessionParts[sessionParts.length - 1] ?? sessionName;
+const routeMap: Record<string, string> = {
+  home: '',
+  now: '/now',
+  archive: '/archive',
+};
+const sessionHref = sessionLabel in routeMap
+  ? `${import.meta.env.BASE_URL}${routeMap[sessionLabel]}`
+  : null;
 ---
 <div class="tmux-bar" role="banner">
   <span class="left">
-    <span class="bracket">[</span>sherodtaylor.dev<span class="bracket">]</span>
-    <span class="bracket">[</span>{sessionName}<span class="bracket">]</span>
+    <span class="bracket">[</span>{sessionPrefix && (<>{sessionPrefix}<span class="bracket">:</span></>)}{sessionHref ? <a href={sessionHref} class="bar-link">{sessionLabel}</a> : sessionLabel}<span class="bracket">]</span>
   </span>
   <span class="right">
     {status && (
       <span class="status">
-        <a href={`${import.meta.env.BASE_URL}/now`}>now</a>
+        <a href={`${import.meta.env.BASE_URL}/now`} class="bar-link">now</a>
         <span class="bracket"> · </span>
         <span class="oneliner">{status}</span>
       </span>
@@ -112,14 +126,15 @@ const status = nowEntries[0]?.data.oneliner ?? '';
     white-space: nowrap;
     color: var(--fg-muted);
   }
-  /* /now link reads as a real link — accent color + subtle underline,
-     matching the body link style. */
-  .status a {
+  /* Bar-internal links — accent color + subtle underline. Used for the
+     session-label "home" inside [0:home] on the left and the /now anchor
+     on the right. Same shape both sides so they read as a matched pair. */
+  .bar-link {
     color: var(--accent);
     border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
     flex-shrink: 0;
   }
-  .status a:hover, .status a:focus-visible {
+  .bar-link:hover, .bar-link:focus-visible {
     border-bottom-color: var(--accent);
   }
   .muted { color: var(--fg-muted); }
