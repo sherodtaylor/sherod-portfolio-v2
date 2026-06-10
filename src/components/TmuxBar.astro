@@ -29,10 +29,16 @@ const openToWork = loadConfig().personal.openToWork === true;
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 const path = Astro.url.pathname.replace(new RegExp(`^${base}`), '') || '/';
 
+// "writing" routes to the Writing pane anchor on home — that's where the
+// engineering essays live (per index.astro's Writing pane, id pane-writing).
+// `/archive` is intentionally NOT in the nav: per SOUL.md it's the
+// off-brand bin and is not linked from home. Active matches an article
+// read view; home stays "home" even when scrolled to #pane-writing
+// (hash changes don't shift the active register).
 const nav = [
-  { idx: 0, label: 'home',    href: `${base}/`,        match: (p: string) => p === '/' },
-  { idx: 1, label: 'now',     href: `${base}/now`,     match: (p: string) => p.startsWith('/now') },
-  { idx: 2, label: 'writing', href: `${base}/archive`, match: (p: string) => p.startsWith('/archive') || p.startsWith('/articles') },
+  { idx: 0, label: 'home',    href: `${base}/`,               match: (p: string) => p === '/' },
+  { idx: 1, label: 'now',     href: `${base}/now`,            match: (p: string) => p.startsWith('/now') },
+  { idx: 2, label: 'writing', href: `${base}/#pane-writing`,  match: (p: string) => p.startsWith('/articles') },
 ];
 ---
 <div class="tmux-bar" role="banner">
