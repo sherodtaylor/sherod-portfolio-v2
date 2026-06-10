@@ -127,14 +127,14 @@ experience:
       location: "New York, NY"
       type: "Full-time"
       logo: "bbg"
-      description: "Two teams, 10 engineers, building AI tooling for the internal developer platform that 9,000+ engineers ship on daily. Focus: making our APIs callable by AI agents end-to-end."
+      description: "Two teams, 10 engineers, behind the managed cloud platform 9,000+ engineers ship on every day — client API gateway, module-federated frontend platform, event-driven workflows, observability. Lately: shipped an MCP server letting AI agents manage infra; driving AI-native product strategy across the platform."
       achievements:
-        - "Lead two engineering teams (10 people) — AI platform tooling and the internal developer platform"
-        - "Bridged the platform's API surface to agentic developer tools: identity, gateway, and libraries so AI agents authenticate as first-class clients alongside humans"
-        - "Founded the team's microfrontend framework (Vite + Module Federation) — product teams self-serve onto the platform with auth, deployment, and shared UI primitives baked in"
-        - "Coach engineers to work ahead via POCs in the margin — surface real constraints, graduate the work into the roadmap with known tradeoffs"
-        - "Stay hands-on in the codebase — model the working-ahead instinct I expect from the team"
-      technologies: ["Go", "TypeScript", "React", "Module Federation", "Kubernetes", "Observability", "Python", "AI / LLM tooling"]
+        - "Lead two engineering teams (10 people) behind the managed cloud platform — 9,000+ engineers ship on it every day"
+        - "Founded the client API gateway and the module-federated frontend platform (Vite + Module Federation) — single unified experience, self-serve auth + deploy + shared UI primitives; evangelized via internal architecture talks"
+        - "Designed the event-driven workflow + observability stack — per-team SLO dashboards, runtime-switchable"
+        - "Shipped an MCP server so AI agents manage infra alongside humans — anchors the AI-native product strategy across the platform"
+        - "Coach engineers to work ahead via POCs in the margin; stay hands-on modeling the instinct"
+      technologies: ["Go", "TypeScript", "React", "Module Federation", "Kubernetes", "Observability", "Python", "MCP", "AI / LLM tooling"]
       color: "from-orange-500/20 to-red-500/20"
     - company: "Bloomberg LP"
       company_url: "https://www.bloomberg.com"
