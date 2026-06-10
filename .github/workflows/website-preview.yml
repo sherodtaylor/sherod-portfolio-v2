@@ -52,12 +52,16 @@ jobs:
         if: github.event.action != 'closed'
         run: |
           # Match the website.yml convention — github.io URL until DNS swap.
+          # Bumped to 10 min (60 × 10s) because GH Pages occasionally takes
+          # 5–8 min to expose a fresh gh-pages push for project sites; PR #28
+          # hit the old 5-min ceiling cleanly (deploy succeeded, Pages was
+          # still serving the prior tree).
           URL="${PREVIEW_HOST:-https://sherodtaylor.github.io/sherod-portfolio-v2}/pr-preview/pr-${{ github.event.number }}/"
-          for i in $(seq 1 30); do
+          for i in $(seq 1 60); do
             code=$(curl -s -o /dev/null -w "%{http_code}" "${URL}?cb=$(date +%s)")
-            echo "[$i/30] ${URL} -> ${code}"
+            echo "[$i/60] ${URL} -> ${code}"
             if [ "$code" = "200" ]; then exit 0; fi
             sleep 10
           done
-          echo "ERROR: preview URL still not 200 after 5 minutes." >&2
+          echo "ERROR: preview URL still not 200 after 10 minutes." >&2
           exit 1

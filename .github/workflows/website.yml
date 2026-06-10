@@ -56,11 +56,11 @@ jobs:
       - name: Verify production URL is reachable
         run: |
           URL="${PROD_URL:-https://sherodtaylor.github.io/sherod-portfolio-v2/}"
-          for i in $(seq 1 30); do
+          for i in $(seq 1 60); do
             code=$(curl -s -o /dev/null -w "%{http_code}" "${URL}?cb=$(date +%s)")
-            echo "[$i/30] ${URL} -> ${code}"
+            echo "[$i/60] ${URL} -> ${code}"
             if [ "$code" = "200" ]; then exit 0; fi
             sleep 10
           done
-          echo "ERROR: production URL still not 200 after 5 minutes — check Settings → Pages." >&2
+          echo "ERROR: production URL still not 200 after 10 minutes — check Settings → Pages." >&2
           exit 1
