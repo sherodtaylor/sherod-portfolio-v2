@@ -13,46 +13,11 @@ personal:
     - "I lead two engineering teams at Bloomberg (10 people) building AI tooling and the platform 9,000+ engineers ship on daily."
     - "12+ years of turning infrastructure into leverage for other teams. Lately: making our internal APIs callable by AI agents end-to-end — identity, gateway, and the libraries product teams use to ship."
     - "Off-hours, I run a home lab of three Claude Code agents — devbot, infrabot, pmbot — that open and review their own PRs. Open source as agent-smith and homelab."
-  availability:
-    status: "Open for new opportunities"
-    active: true
-
 contact:
   email: "sherodtaylor@gmail.com"
   website: "https://www.sherodtaylor.dev"
   github: "https://github.com/sherodtaylor"
   linkedin: "https://www.linkedin.com/in/sherodtaylor/"
-
-site:
-  title: "Sherod Taylor - Platform Engineering Manager @ Bloomberg"
-  description: "Sherod Taylor Platform Engineering Manager @ Bloomberg with deep technical experience."
-
-hero:
-  highlights:
-    - name: "AI Platforms"
-      icon: "Bot"
-      color: "green"
-    - name: "Distributed Systems"
-      icon: "Server"
-      color: "purple"
-    - name: "API Architecture"
-      icon: "Cog"
-      color: "orange"
-    - name: "Full-Stack"
-      icon: "Code"
-      color: "cyan"
-    - name: "Leadership"
-      icon: "Crown"
-      color: "amber"
-    - name: "Project Management"
-      icon: "Tasks"
-      color: "emerald"
-    - name: "Product"
-      icon: "Box"
-      color: "rose"
-    - name: "Design"
-      icon: "Palette"
-      color: "indigo"
 
 skills:
   categories:
