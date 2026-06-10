@@ -49,9 +49,12 @@ const sessionHref = sessionLabel in routeMap
       </span>
     )}
     {openToWork && (
-      <span class="open" title="Open to new opportunities" aria-label="Open to new opportunities">
+      <span
+        class="open"
+        title="Open to platform engineering conversations"
+        aria-label="Open to platform engineering conversations"
+      >
         <span class="open-dot" aria-hidden="true">●</span>
-        <span class="open-label">open to work</span>
       </span>
     )}
     <button
@@ -147,25 +150,21 @@ const sessionHref = sessionLabel in routeMap
   }
   .muted { color: var(--fg-muted); }
 
-  /* Availability dot — minimal status-line presence indicator. The dot
-     itself is a soft positive-signal green (matches agent-smith's accent
-     family); the label stays muted so the indicator reads as chrome,
-     not a CTA. Hide the label on narrow screens — the dot + tooltip
-     carry the meaning. */
+  /* Availability dot — bare presence indicator. No label (brandbot's
+     review on #27 flagged "open to work" as LinkedIn UI-string + wrong
+     voice register); the tooltip carries the full sentence in Sherod's
+     voice. The dot is a soft positive-signal green; reading as chrome,
+     not a CTA. */
   .open {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-1);
     flex-shrink: 0;
-    color: var(--fg-muted);
+    cursor: help;
   }
   .open-dot {
     color: #5fbf8d;
-    font-size: 1.05em;
+    font-size: 1.1em;
     line-height: 1;
-  }
-  @media (max-width: 640px) {
-    .open-label { display: none; }
   }
 
   #theme-toggle {
