@@ -5,14 +5,16 @@ personal:
   name: "Sherod Taylor"
   title: "Platform Engineering Manager @ Bloomberg"
   location: "New York, NY"
-  tagline: "Hi I'm Sherod"
-  description: "Platform Engineering Manager at Bloomberg. I lead two teams (10 engineers) building AI tooling for the platform 9,000+ engineers ship on daily. 12+ years turning infra into leverage. Off-hours: three Claude Code agents in a home lab that open and review their own PRs."
-  # Multi-paragraph About for the website only. The single-paragraph
-  # `description` above feeds the LaTeX-resume header + OG/meta blurb.
+  tagline: "Platform EM @ Bloomberg · Managed cloud serving 9,000+ engineers, 100k hosts · Working ahead via POCs · Homelab + agent-smith"
+  description: "Platform Engineering Manager at Bloomberg, leading two teams behind a managed cloud platform that maintains 100,000 hosts and serves 9,000+ engineers daily. I lead by working ahead — POCs in the margin that graduate into the roadmap, enabling AI tooling deep into the platform. Off-hours: a k3s homelab running agent-smith alongside family apps (Jellyfin, Audiobookshelf, grimmory)."
+  # Multi-paragraph About for the website (Tier C from
+  # homelab/docs/product/personal/brand/taglines.md). The single-paragraph
+  # `description` above feeds the LaTeX resume header + OG/meta blurb.
   about:
-    - "I lead two engineering teams at Bloomberg (10 people) building AI tooling and the platform 9,000+ engineers ship on daily."
-    - "12+ years of turning infrastructure into leverage for other teams. Lately: making our internal APIs callable by AI agents end-to-end — identity, gateway, and the libraries product teams use to ship."
-    - "Off-hours, I run a home lab of three Claude Code agents — devbot, infrabot, pmbot — that open and review their own PRs. Open source as agent-smith and homelab."
+    - "I'm a platform engineering manager at Bloomberg. I lead two teams behind our managed cloud platform — the system that maintains the lifecycle of 100,000 hosts and serves 9,000+ engineers every day."
+    - "I lead by working ahead — POCs in the margin that graduate into the team's roadmap with known tradeoffs. My strategy: enable AI tooling deep into the platform so every engineer we serve gets force-multiplied."
+    - "Off-hours: my k3s homelab runs agent-smith — an AI engineering agent workforce that ships in my sleep — alongside the family apps (Jellyfin, Audiobookshelf, grimmory)."
+    - "The line between human and agent teammates is the next infrastructure frontier, and I'm working on both sides of it."
   availability:
     status: "Open for new opportunities"
     active: true
