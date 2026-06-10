@@ -5,7 +5,7 @@ personal:
   name: "Sherod Taylor"
   title: "Platform Engineering Manager @ Bloomberg"
   location: "New York, NY"
-  tagline: "Hi I'm Sherod"
+  tagline: "Platform EM @ Bloomberg · Managed cloud serving 9,000+ engineers, 100k hosts · Working ahead via POCs · Homelab + agent-smith"
   description: "Platform Engineering Manager at Bloomberg, leading two teams behind a managed cloud platform that maintains 100,000 hosts and serves 9,000+ engineers daily. I lead by working ahead — POCs in the margin that graduate into the roadmap, enabling AI tooling deep into the platform. Off-hours: a k3s homelab running agent-smith alongside family apps (Jellyfin, Audiobookshelf, grimmory)."
   # Multi-paragraph About for the website (Tier C from
   # homelab/docs/product/personal/brand/taglines.md). The single-paragraph
