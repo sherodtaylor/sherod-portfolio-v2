@@ -55,6 +55,7 @@ const sessionHref = sessionLabel in routeMap
         aria-label="Open to platform engineering conversations"
       >
         <span class="open-dot" aria-hidden="true">●</span>
+        <span class="open-label">open</span>
       </span>
     )}
     <button
@@ -150,21 +151,25 @@ const sessionHref = sessionLabel in routeMap
   }
   .muted { color: var(--fg-muted); }
 
-  /* Availability dot — bare presence indicator. No label (brandbot's
-     review on #27 flagged "open to work" as LinkedIn UI-string + wrong
-     voice register); the tooltip carries the full sentence in Sherod's
-     voice. The dot is a soft positive-signal green; reading as chrome,
-     not a CTA. */
+  /* Availability dot — tmux-status presence indicator. Single-word
+     label "open" matches the tmux convention (like "● active" or
+     "● online"); avoids LinkedIn's "open to work" recruiter-bait
+     register. Tooltip carries the longer brand-voice sentence. */
   .open {
     display: inline-flex;
     align-items: center;
+    gap: var(--space-1);
     flex-shrink: 0;
+    color: var(--fg-muted);
     cursor: help;
   }
   .open-dot {
     color: #5fbf8d;
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1;
+  }
+  @media (max-width: 640px) {
+    .open-label { display: none; }
   }
 
   #theme-toggle {
