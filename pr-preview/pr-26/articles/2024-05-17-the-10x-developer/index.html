@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The 10x Developer — Sherod Taylor</title><meta name="description" content="What actually separates great engineers from average — curiosity and POCs in the margin."><link rel="icon" type="image/svg+xml" href="/sherod-portfolio-v2/pr-preview/pr-26/favicon.svg"><link rel="canonical" href="https://sherodtaylor.dev/sherod-portfolio-v2/pr-preview/pr-26/articles/2024-05-17-the-10x-developer"><link rel="alternate" type="application/rss+xml" title="Sherod Taylor — Writing" href="/sherod-portfolio-v2/pr-preview/pr-26/articles/feed.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&display=swap"><meta property="og:title" content="The 10x Developer — Sherod Taylor"><meta property="og:description" content="What actually separates great engineers from average — curiosity and POCs in the margin."><meta property="og:type" content="article"><meta property="og:url" content="https://sherodtaylor.dev/sherod-portfolio-v2/pr-preview/pr-26/articles/2024-05-17-the-10x-developer"><meta name="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://sherodtaylor.dev/#person","name":"Sherod Taylor","jobTitle":"Platform Engineering Manager @ Bloomberg","description":"Platform Engineering Manager at Bloomberg. I lead two teams (10 engineers) building AI tooling for the platform 9,000+ engineers ship on daily. 12+ years turning infra into leverage. Off-hours: three Claude Code agents in a home lab that open and review their own PRs.","url":"https://sherodtaylor.dev","email":"mailto:sherodtaylor@gmail.com","sameAs":["https://github.com/sherodtaylor","https://www.linkedin.com/in/sherodtaylor/"],"knowsAbout":["AI Platforms","MCP","Distributed Systems","Kubernetes","Platform Engineering","Engineering Leadership","API Architecture"]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The 10x Developer","description":"What actually separates great engineers from average — curiosity and POCs in the margin.","datePublished":"2024-05-17T00:00:00.000Z","dateModified":"2024-05-17T00:00:00.000Z","author":{"@id":"https://sherodtaylor.dev/#person"},"publisher":{"@id":"https://sherodtaylor.dev/#person"},"url":"https://sherodtaylor.dev/sherod-portfolio-v2/pr-preview/pr-26/articles/2024-05-17-the-10x-developer","mainEntityOfPage":"https://sherodtaylor.dev/sherod-portfolio-v2/pr-preview/pr-26/articles/2024-05-17-the-10x-developer","inLanguage":"en"}</script><!--
+      Theme precedence: localStorage saved preference → OS prefers-color-scheme
+      → fallback to dark (SOUL.md default). Applied inline before paint to
+      avoid a flash. Both APIs gracefully degrade if blocked or unsupported.
+    --><script>
+      (() => {
+        let theme = null;
+        try {
+          const saved = localStorage.getItem('theme');
+          if (saved === 'light' || saved === 'dark') theme = saved;
+        } catch { /* localStorage blocked */ }
+        if (!theme && typeof window.matchMedia === 'function') {
+          if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            theme = 'light';
+          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = 'dark';
+          }
+        }
+        if (theme) document.documentElement.setAttribute('data-theme', theme);
+        // If still no theme, leave the default in tokens.css alone (dark).
+      })();
+    </script><link rel="stylesheet" href="/sherod-portfolio-v2/pr-preview/pr-26/_astro/index.C8JD1_8c.css">
+<style>.back[data-astro-cid-xw3clhsd]{font-size:var(--fs-small);margin-bottom:var(--space-6)}article[data-astro-cid-xw3clhsd]{margin-top:var(--space-6)}article[data-astro-cid-xw3clhsd] h2{margin-top:var(--space-8);margin-bottom:var(--space-3)}article[data-astro-cid-xw3clhsd] h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}article[data-astro-cid-xw3clhsd] p{margin-bottom:var(--space-4)}article[data-astro-cid-xw3clhsd] ul,article[data-astro-cid-xw3clhsd] ol{margin-bottom:var(--space-4)}
+</style></head> <body> <a href="#main" class="skip-link">Skip to content</a> <div class="tmux-bar" role="banner" data-astro-cid-ul4lvygc> <span class="left" data-astro-cid-ul4lvygc> <span class="bracket" data-astro-cid-ul4lvygc>[</span>sherodtaylor.dev<span class="bracket" data-astro-cid-ul4lvygc>]</span> <span class="bracket" data-astro-cid-ul4lvygc>[</span>0:article<span class="bracket" data-astro-cid-ul4lvygc>]</span> </span> <span class="right" data-astro-cid-ul4lvygc> <span class="status" data-astro-cid-ul4lvygc> <a href="/sherod-portfolio-v2/pr-preview/pr-26/now" data-astro-cid-ul4lvygc>now</a> <span class="bracket" data-astro-cid-ul4lvygc> · </span> <span class="oneliner" data-astro-cid-ul4lvygc>Shipping AI tooling at Bloomberg, running an agent fleet at home.</span> </span> <button id="theme-toggle" type="button" aria-label="Toggle theme (click to switch)" title="Toggle theme" data-astro-cid-ul4lvygc> <!-- Label shows current mode ("dark" / "light"); clicking flips it.
+           Server-renders "dark" because dark is the default; the inline
+           script in <head> rewrites it on cold load when localStorage
+           holds a saved preference, so the visible label always matches
+           the actual data-theme attribute. --> <span class="bracket" data-astro-cid-ul4lvygc>[</span><span class="theme-label" data-theme-label data-astro-cid-ul4lvygc>dark</span><span class="bracket" data-astro-cid-ul4lvygc>]</span> </button> </span> </div> <script>
+  (() => {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    const label = btn.querySelector('[data-theme-label]');
+    const sync = () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (label) label.textContent = current;
+    };
+    sync();
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch { /* ignore */ }
+      sync();
+    });
+  })();
+</script>  <main id="main">  <p class="back" data-astro-cid-xw3clhsd><a href="/sherod-portfolio-v2/pr-preview/pr-26" data-astro-cid-xw3clhsd>← home</a></p> <h1 data-astro-cid-xw3clhsd>The 10x Developer</h1> <p class="muted" data-astro-cid-xw3clhsd> 2024-05-17 </p> <article data-astro-cid-xw3clhsd> <p>A dev, a rockstar, a 10x-er. Speed vs efficiency? Could it be knowledge or just general ability?</p>
+<p>I think what separates the great from the average is their ability to work ahead or be curious.
+A lot of engineers get complacent or see the average workload from their team and decide that’s
+the level we should operate on. The lack of curiosity or imagination on what we can improve is
+what stops good engineers. The most educated person is the one who seeks knowledge and challenges
+the status quo — in their job or in life.</p>
+<h3 id="how-to-stay-curious">How to stay curious</h3>
+<p>With our jobs we become bored. We work on the same project that comes in different iterations
+that only change ever so slightly. Then we continue with the same requirements and don’t try to
+push the envelope. What people are missing is what interests <em>them</em>. We don’t question our
+managers enough or give them ideas.</p>
+<h2 id="proofs-of-concept">Proofs of Concept</h2>
+<p>Most engineers don’t put on their thinking caps to brainstorm what <em>could</em> be. Think about what
+could be or any crazy thoughts you have. Then create a POC — a way to learn or become interested
+in the work you do. As you create the POCs, push your managers to show them a better way. More
+than likely they will love the effort you put in and how it benefits the team.</p>
+<p>In my career the best engineers I know stay curious and challenge the status quo. They see a
+problem and fix it on the spot or propose a better way. Don’t get complacent — keep what you do
+interesting. Not all ideas will be accepted, but the ones that do have the ability to make a big
+impact.</p>
+<p>On my current team the last four major initiatives started out as POCs I built in the margin.
+Over the past four years we’ve created a team around the products I designed and pushed. Stay
+curious and build POCs — it’s the most fun and validating way to have a major impact.</p> </article>   </main> <footer data-astro-cid-sz7xmlte> <hr aria-hidden="true" data-astro-cid-sz7xmlte> <!--
+    Visible AI-readable summary line per SOUL.md "AI-accessibility". Identical
+    content for humans and crawlers — no cloaked text, no hidden prompts.
+  --> <p class="ai-summary muted" data-astro-cid-sz7xmlte>
+I'm Sherod Taylor — Platform Engineering Manager @ Bloomberg. I build AI tooling and developer
+    platforms, and ship in public via  <a href="https://github.com/sherodtaylor/agent-smith" data-astro-cid-sz7xmlte>agent-smith</a>  and my homelab fleet.
+</p> <p class="meta muted" data-astro-cid-sz7xmlte> Sherod Taylor · NYC · 2026 </p> </footer>  </body></html> 
